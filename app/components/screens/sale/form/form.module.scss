@@ -1,0 +1,29 @@
+.form {
+  padding: 0.8rem 1rem;
+  -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #d9d9d9;
+  &:last-child {
+    border-bottom: none;
+  }
+  .itemInput {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    @media (max-width: "720px") {
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+export { default as Home } from "./home/Home";
+export { default as NotFound } from "./not-found/NotFound";
+export { default as Employee } from "./employee/Employee";
+export { default as Warehouse } from "./warehouse/Warehouse";
+export { default as Product } from "./product/Product";
+export { default as ProductionHistory } from "./production/ProductionHistory";
+export { default as ProductionCreate } from "./production/ProductionCreate";
+export { default as SaleHistory } from "./sale/SaleHistory";
+export { default as SaleSell } from "./sale/SaleSell";
+export { default as Client } from "./client/Client";
+export { default as Login } from "./login/Login";

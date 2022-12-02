@@ -1,0 +1,49 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 256px;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  transition: left 0.3s ease-in-out;
+  z-index: 200;
+  .menu {
+    height: calc(100% - 4.45rem) !important;
+    overflow: auto;
+    position: relative;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 2px;
+      background-color: #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 10px;
+    }
+  }
+  .logo {
+    padding: 20px 24px 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #4b465cde;
+    }
+  }
+}
+.active {
+  left: -256px;
+}

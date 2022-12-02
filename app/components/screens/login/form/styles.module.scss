@@ -1,0 +1,19 @@
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 50px 25px;
+  border-radius: 20px;
+  z-index: 1200;
+  background-color: rgba(225, 225, 225, 0.02);
+  backdrop-filter: blur(5px);
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+    pointer-events: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}

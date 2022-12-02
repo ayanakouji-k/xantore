@@ -1,0 +1,15 @@
+.layout {
+  padding: 20px;
+  margin-left: 256px;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease-in-out;
+  @media (max-width: 992px) {
+    margin-left: 0;
+  }
+  main {
+    margin: 20px 0;
+  }
+}
+.active {
+  margin-left: 0px;
+}
