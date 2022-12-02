@@ -4,9 +4,9 @@ export default function middleware(req: NextRequest) {
   const verify = !req.cookies.get("token");
   const url = req.url;
   if (!verify && url.includes("/login")) {
-    return NextResponse.redirect("http://localhost:3000/");
+    return NextResponse.redirect("https://xantore.vercel.app");
   }
-  if (verify && url === "http://localhost:3000/") {
-    return NextResponse.redirect("http://localhost:3000/login");
+  if (verify && url === "https://xantore.vercel.app") {
+    return NextResponse.redirect("https://xantore.vercel.app/login");
   }
 }
