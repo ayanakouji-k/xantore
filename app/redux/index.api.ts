@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import Cookies from "js-cookie";
 import { apiUrl } from "../config/url.config";
 import { TUser } from "./index.types";
 
@@ -7,9 +8,9 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: apiUrl,
     prepareHeaders: (headers) => {
-      const token = "12";
+      const token = Cookies.get("token");
       if (token) {
-        // headers.set("Authorization", `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
     },

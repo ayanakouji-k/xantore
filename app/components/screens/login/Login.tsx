@@ -10,7 +10,7 @@ import Image from "next/image";
 const Login: React.FC = () => {
   return (
     <>
-      <Meta title="Логин" />
+      <Meta title="Ханторе | Логин" />
       <div className={styles.login}>
         <Image
           className={styles.fon}
