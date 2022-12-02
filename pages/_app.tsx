@@ -19,17 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [token]);
   return (
     <Provider store={store}>
-      {show ? (
-        <Layout>
-          <NextNProgress color="#887EF2" />
-          <Component {...pageProps} />
-        </Layout>
-      ) : (
-        <>
-          <NextNProgress color="#887EF2" />
-          <Component {...pageProps} />
-        </>
-      )}
+      <Layout>
+        <NextNProgress color="#887EF2" />
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   );
 }

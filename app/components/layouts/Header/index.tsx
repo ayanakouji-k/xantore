@@ -28,7 +28,7 @@ const Header: React.FC = () => {
   };
   const { navShow } = useAppSelector(selectNavbar);
   const onRemoveToken = () => {
-    router.push("/login");
+    router.push("/");
     Cookies.remove("token");
     hide();
   };

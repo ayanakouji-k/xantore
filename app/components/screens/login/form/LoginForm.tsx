@@ -14,7 +14,7 @@ const LoginForm: React.FC = () => {
   const router = useRouter();
   const onFinish = (values: any) => {
     if (values) {
-      router.push("/");
+      router.push("/home");
       Cookies.set("token", "1212231");
     }
     form.resetFields();

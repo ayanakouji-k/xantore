@@ -1,7 +1,6 @@
-import { NextPage } from "next";
+import React from "react";
+import { Login } from "../app/components/screens";
 
-import { Home } from "../app/components/screens";
+const LoginPage = () => <Login />;
 
-const HomePage: NextPage = () => <Home />;
-
-export default HomePage;
+export default LoginPage;

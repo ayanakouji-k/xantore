@@ -5,7 +5,7 @@ import { ImPriceTag } from "react-icons/im";
 import { HiUsers } from "react-icons/hi";
 import { TbShoppingCartPlus, TbBuildingFactory } from "react-icons/tb";
 export const routes: MenuProps["items"] = [
-  { key: "/", label: "Главная", icon: <BiHomeAlt /> },
+  { key: "/home", label: "Главная", icon: <BiHomeAlt /> },
   {
     key: "/warehouse",
     label: "Склад",
