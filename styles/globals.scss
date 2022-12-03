@@ -85,6 +85,9 @@ h6 {
 #__next {
   min-height: 100% !important;
 }
+.ant-drawer-header {
+  display: none !important;
+}
 .ant-modal-footer {
   button {
     &:nth-child(2) {

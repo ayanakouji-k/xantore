@@ -6,10 +6,6 @@
   height: 100%;
   overflow: hidden;
   background-color: #fff;
-  -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
-  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
-  transition: left 0.3s ease-in-out;
-  z-index: 200;
   .menu {
     height: calc(100% - 4.45rem) !important;
     overflow: auto;
@@ -43,7 +39,4 @@
       color: #4b465cde;
     }
   }
-}
-.active {
-  left: -256px;
 }

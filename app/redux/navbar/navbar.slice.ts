@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TNavbar } from "./navbar.types";
 
 const initialState: TNavbar = {
-  navShow: false,
+  navShow: true,
 };
 
 const navbarSlice = createSlice({

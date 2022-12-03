@@ -1,9 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Menu, MenuProps } from "antd";
+import { Drawer, Menu, MenuProps } from "antd";
 import Link from "next/link";
-import clsx from "clsx";
 import { MdClear } from "react-icons/md";
 
 import { routes } from "../routes";
@@ -19,41 +18,59 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { navShow } = useAppSelector(selectNavbar);
-  const [isNavShow, setIsNavShow] = React.useState(false);
   const { isMobile } = useResponsive(992);
+
+  const [drawer, setDrawer] = React.useState(false);
+
   const onClick: MenuProps["onClick"] = (e) => {
     router.push(e.key);
     if (isMobile) {
-      dispatch(isNavbarShow(true));
+      dispatch(isNavbarShow(!navShow));
     }
   };
+  const onClose = () => {
+    dispatch(isNavbarShow(!navShow));
+  };
   React.useEffect(() => {
-    setIsNavShow(navShow);
-  }, [navShow]);
+    if (isMobile) {
+      setDrawer(!navShow);
+    } else {
+      setDrawer(navShow);
+    }
+  }, [navShow, isMobile]);
   return (
-    <nav className={clsx(styles.navbar, isNavShow && styles.active)}>
-      <div className={styles.logo}>
-        <Link href="/" className={styles.link}>
-          <Image src={logo} width={40} alt="Logo" />
-          <h3>Xantore</h3>
-        </Link>
-        <div style={{ cursor: "pointer", marginTop: 7 }}>
-          <MdClear
-            onClick={() => dispatch(isNavbarShow(!navShow))}
-            color="#7569f0"
-            size={25}
+    <Drawer
+      placement="left"
+      width={256}
+      onClose={onClose}
+      zIndex={200}
+      open={drawer}
+      mask={isMobile}
+    >
+      <div className={styles.navbar}>
+        <div className={styles.logo}>
+          <Link href="/" className={styles.link}>
+            <Image src={logo} width={40} alt="Logo" />
+            <h3>Xantore</h3>
+          </Link>
+          <div style={{ cursor: "pointer", marginTop: 7 }}>
+            <MdClear
+              onClick={() => dispatch(isNavbarShow(!navShow))}
+              color="#7569f0"
+              size={25}
+            />
+          </div>
+        </div>
+        <div className={styles.menu}>
+          <Menu
+            mode="inline"
+            selectedKeys={[router.pathname]}
+            onClick={onClick}
+            items={routes}
           />
         </div>
       </div>
-      <div className={styles.menu}>
-        <Menu
-          mode="inline"
-          selectedKeys={[router.pathname]}
-          onClick={onClick}
-          items={routes}
-        />
-      </div>
-    </nav>
+    </Drawer>
   );
 };
 

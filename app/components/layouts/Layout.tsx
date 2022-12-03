@@ -12,9 +12,9 @@ import styles from "./Layout.module.scss";
 
 const Layout: React.FC<any> = ({ children }) => {
   const { navShow } = useAppSelector(selectNavbar);
-  const [isNavShow, setIsNavShow] = React.useState(false);
+  const [isNavShow, setIsNavShow] = React.useState(navShow);
   React.useEffect(() => {
-    setIsNavShow(navShow);
+    setIsNavShow(!navShow);
   }, [navShow]);
   return (
     <>
