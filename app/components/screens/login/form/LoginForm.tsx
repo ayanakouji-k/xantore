@@ -12,19 +12,14 @@ import styles from "./styles.module.scss";
 const LoginForm: React.FC = () => {
   const [form] = Form.useForm();
   const router = useRouter();
-  const token = Cookies.get("token");
 
   const onFinish = (values: any) => {
     if (values) {
       Cookies.set("token", "1212231");
+      router.push("/home");
     }
     form.resetFields();
   };
-  React.useEffect(() => {
-    if (token) {
-      router.push("/home");
-    }
-  }, [token]);
   return (
     <div className={styles.form}>
       <div className={styles.logo}>

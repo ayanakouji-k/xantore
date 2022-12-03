@@ -1,11 +1,11 @@
 import React from "react";
+import Image from "next/image";
 import Meta from "../../../utils/Meta";
 import LoginForm from "./form/LoginForm";
 
 import fon from "../../../assets/images/fon.jpg";
 
 import styles from "./login.module.scss";
-import Image from "next/image";
 
 const Login: React.FC = () => {
   return (
