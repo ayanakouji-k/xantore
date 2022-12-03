@@ -18,8 +18,6 @@ const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const token = Cookies.get("token");
-
   const [open, setOpen] = React.useState(false);
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
@@ -31,6 +29,7 @@ const Header: React.FC = () => {
   const { navShow } = useAppSelector(selectNavbar);
   const onRemoveToken = () => {
     Cookies.remove("token");
+    setTimeout(() => router.push("/"), 1000);
     hide();
   };
   const content = (
@@ -43,11 +42,6 @@ const Header: React.FC = () => {
       />
     </div>
   );
-  React.useEffect(() => {
-    if (!token) {
-      router.push("/");
-    }
-  }, [token]);
   return (
     <div className={styles.header}>
       <div

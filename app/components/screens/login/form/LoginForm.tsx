@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import Cookies from "js-cookie";
 
 import { useStepAuthLoginMutation } from "../../../../redux/index.endpoints";
