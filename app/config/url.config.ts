@@ -1,1 +1,1 @@
-export const apiUrl = "https://khantore.herokuapp.com";
+export const apiUrl = "http://83.222.9.7:8088";

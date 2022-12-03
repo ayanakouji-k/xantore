@@ -4,4 +4,5 @@ export type TUser = {
 };
 export type TMessage = {
   massage: string;
+  data: string;
 };

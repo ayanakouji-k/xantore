@@ -1,25 +1,38 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import Cookies from "js-cookie";
+
+import { useStepAuthLoginMutation } from "../../../../redux/index.endpoints";
 
 import logo from "../../../../assets/images/logo.png";
 
 import styles from "./styles.module.scss";
+import { TStepAuthLogin } from "../../../../redux/auth/auth.types";
 
 const LoginForm: React.FC = () => {
   const [form] = Form.useForm();
   const router = useRouter();
 
-  const onFinish = (values: any) => {
-    if (values) {
-      Cookies.set("token", "1212231");
-      router.push("/home");
-    }
-    form.resetFields();
+  const [stepAuthLogin, { data: authLogin, isLoading, isSuccess }] =
+    useStepAuthLoginMutation();
+
+  const onFinish = (values: TStepAuthLogin) => {
+    stepAuthLogin(values);
   };
+  React.useEffect(() => {
+    if (isSuccess) {
+      router.push("/home");
+      form.resetFields();
+    }
+  }, [isSuccess]);
+  React.useEffect(() => {
+    if (authLogin) {
+      Cookies.set("token", authLogin.data);
+    }
+  }, [authLogin, isSuccess]);
   return (
     <div className={styles.form}>
       <div className={styles.logo}>
@@ -38,15 +51,16 @@ const LoginForm: React.FC = () => {
         autoComplete="off"
       >
         <Form.Item
-          name="username"
+          name="phoneNumber"
           className={styles.formItem}
           rules={[
-            { required: true, message: "Пожалуйста, заполните поле имя!" },
+            { required: true, message: "Пожалуйста, заполните поле номер!" },
           ]}
         >
           <Input
-            placeholder="Имя"
-            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Номер"
+            inputMode="tel"
+            prefix={<PhoneOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
 
@@ -64,6 +78,7 @@ const LoginForm: React.FC = () => {
         <Button
           type="primary"
           htmlType="submit"
+          loading={isLoading}
           style={{ backgroundColor: "#7367f0", width: "100%" }}
         >
           Войти

@@ -31,7 +31,6 @@ const Header: React.FC = () => {
   const { navShow } = useAppSelector(selectNavbar);
   const onRemoveToken = () => {
     Cookies.remove("token");
-    router.push("/");
     hide();
   };
   const content = (
@@ -44,11 +43,11 @@ const Header: React.FC = () => {
       />
     </div>
   );
-  // React.useEffect(() => {
-  //   if (!token) {
-  //     router.push("/");
-  //   }
-  // }, [token]);
+  React.useEffect(() => {
+    if (!token) {
+      router.push("/");
+    }
+  }, [token]);
   return (
     <div className={styles.header}>
       <div

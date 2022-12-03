@@ -4,6 +4,7 @@ import { productApi } from "./product/product.api";
 import { productionApi } from "./production/production.api";
 import { saleApi } from "./sale/sale.api";
 import { clientApi } from "./client/client.api";
+import { authApi } from "./auth/auth.api";
 export const {
   useGetEmployeeQuery,
   useCreateEmployeeMutation,
@@ -32,3 +33,4 @@ export const {
 } = productionApi;
 export const { useGetSaleAllQuery, useCreateSaleMutation } = saleApi;
 export const { useGetClientAllQuery, useCreateClientMutation } = clientApi;
+export const { useCreateUserMutation, useStepAuthLoginMutation } = authApi;

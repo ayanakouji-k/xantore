@@ -31,7 +31,7 @@ const SaleSellForm: React.FC = () => {
     if (some) {
       message.warning("Заполните все поле");
     } else {
-      createSale({ ...values, products: saleItems });
+      createSale({ ...values, productItemsList: saleItems });
     }
   };
   React.useEffect(() => {
@@ -77,7 +77,7 @@ const SaleSellForm: React.FC = () => {
         <SaleSellItems />
         <Form.Item
           label="Оплата"
-          name="payAmount"
+          name="paymentAmount"
           initialValue={0}
           rules={[
             { required: true, message: "Пожалуйста, заполните поле оплата" },

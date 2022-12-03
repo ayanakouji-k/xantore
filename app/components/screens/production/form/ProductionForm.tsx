@@ -16,7 +16,7 @@ const ProductionForm: React.FC = () => {
     useCreateProductionMutation();
 
   const onFinish = (values: any) => {
-    createProduction(values.productionList);
+    createProduction(values);
   };
   React.useEffect(() => {
     if (isError || isSuccess) {
@@ -30,7 +30,7 @@ const ProductionForm: React.FC = () => {
       onFinish={onFinish}
       autoComplete="off"
     >
-      <Form.List name="productionList" initialValue={[{}]}>
+      <Form.List name="items" initialValue={[{}]}>
         {(fields, { add, remove }) => (
           <>
             {fields.map(({ key, name, ...restField }) => (
