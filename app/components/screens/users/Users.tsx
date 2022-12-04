@@ -1,25 +1,22 @@
 import React from "react";
 import { useSetModalOpen } from "../../../hooks";
-
 import Meta from "../../../utils/Meta";
 import { Heading } from "../../shared";
 import { UiButton } from "../../ui";
-import { ClientModal } from "./modal";
-import { ClientTable } from "./table";
+import { UsersModal } from "./modal";
 
-const Client: React.FC = () => {
+const Users: React.FC = () => {
   const { handleClick } = useSetModalOpen();
   return (
     <>
-      <Meta title="Клиенты" />
+      <Meta title="Пользователи" />
       <Heading
-        title="Клиенты"
+        title="Пользователи"
         extra={[<UiButton text="Добавить" onClick={handleClick} />]}
       />
-      <ClientTable />
-      <ClientModal />
+      <UsersModal />
     </>
   );
 };
 
-export default Client;
+export default Users;

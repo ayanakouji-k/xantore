@@ -1,7 +1,10 @@
 import React from "react";
 import { InputNumber, Select } from "antd";
 
-import { useGetWarehouseItemsQuery } from "../../../../redux/index.endpoints";
+import {
+  useGetWarehouseItemsQuery,
+  useGetWarehouseProductItemsQuery,
+} from "../../../../redux/index.endpoints";
 
 import styles from "./form.module.scss";
 import { localeString } from "../../../../utils/numberLocaleString";
@@ -13,12 +16,11 @@ import {
 } from "../../../../redux/sale/sale.slice";
 import { AiFillDelete } from "react-icons/ai";
 
-const SaleSellItem: React.FC<any> = React.memo(({ index, id, item }) => {
+const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
   const dispatch = useAppDispatch();
 
-  const { data: warehouseItems, isLoading } = useGetWarehouseItemsQuery(4, {
-    skip: !4,
-  });
+  const { data: warehouseItems, isLoading } =
+    useGetWarehouseProductItemsQuery(1);
   const handleChange = (value: number) => {
     const findItem = warehouseItems?.data.find(
       (prev) => prev.productItemId === value

@@ -1,6 +1,5 @@
 export type TSaleItem = {
   createdAt: string;
-  product: string;
   amount: number;
   saleId: number;
   debtPrice: number;

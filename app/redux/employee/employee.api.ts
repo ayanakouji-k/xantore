@@ -12,6 +12,7 @@ export const employeeApi = api.injectEndpoints({
       query: () => ({
         url: `api/employee/all`,
       }),
+      transformErrorResponse,
       providesTags: ["employee"],
     }),
     createEmployee: builder.mutation<TMessage, TEmployeeItem>({

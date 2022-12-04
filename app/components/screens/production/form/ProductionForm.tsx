@@ -3,7 +3,7 @@ import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import {
   useCreateProductionMutation,
-  useGetWarehouseItemsQuery,
+  useGetWarehouseProductItemsQuery,
 } from "../../../../redux/index.endpoints";
 import { UiButton } from "../../../ui";
 
@@ -11,7 +11,7 @@ import styles from "./form.module.scss";
 
 const ProductionForm: React.FC = () => {
   const [form] = Form.useForm();
-  const { data: warehouseItems } = useGetWarehouseItemsQuery(4);
+  const { data: warehouseItems } = useGetWarehouseProductItemsQuery(1);
   const [createProduction, { isError, isLoading, isSuccess }] =
     useCreateProductionMutation();
 
@@ -53,7 +53,7 @@ const ProductionForm: React.FC = () => {
                           key={prev.productItemId}
                           value={prev.productItemId}
                         >
-                          {prev.product.name} ({prev.warehouse.name})
+                          {prev.product.name} / {prev.warehouse.name}
                         </Select.Option>
                       ))}
                     </Select>
@@ -93,7 +93,7 @@ const ProductionForm: React.FC = () => {
               onClick={() => add()}
               style={{ marginRight: 20 }}
             >
-              Добавить
+              Добавить +
             </Button>
           </>
         )}

@@ -6,6 +6,9 @@ export default function middleware(req: NextRequest) {
   if (!verify && url.includes("/home")) {
     return NextResponse.redirect("https://xantore.vercel.app/");
   }
+  if (!verify && url.includes("/users")) {
+    return NextResponse.redirect("https://xantore.vercel.app/");
+  }
 
   if (verify && url === "https://xantore.vercel.app/") {
     return NextResponse.redirect("https://xantore.vercel.app/home");

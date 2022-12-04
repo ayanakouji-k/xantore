@@ -17,6 +17,8 @@ export const {
   useCreateWarehouseMutation,
   useWarehouseAddItemMutation,
   useWarehouseMoveItemMutation,
+  useGetWarehouseProductItemsQuery,
+  useGetWarehouseIngredientItemsQuery,
 } = warehouseApi;
 export const {
   useGetProductIdIngredientsQuery,

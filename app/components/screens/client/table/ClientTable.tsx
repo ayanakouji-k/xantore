@@ -49,7 +49,7 @@ const ClientTable: React.FC = () => {
   ];
   return (
     <TableContainer
-      title="Клиент"
+      title="Клиенты"
       rowKey={({ id }) => id}
       columns={columns}
       data={client?.data}

@@ -155,7 +155,7 @@ const ProductModal: React.FC = () => {
                     key={prev.productItemId}
                     value={prev.product.productId}
                   >
-                    {prev.product.name} ({prev.productAmount}) (кг)
+                    {prev.product.name} / {prev.productAmount} кг
                   </Select.Option>
                 ))}
               </Select>

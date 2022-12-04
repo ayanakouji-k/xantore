@@ -9,3 +9,4 @@ export { default as SaleHistory } from "./sale/SaleHistory";
 export { default as SaleSell } from "./sale/SaleSell";
 export { default as Client } from "./client/Client";
 export { default as Login } from "./login/Login";
+export { default as Users } from "./users/Users";

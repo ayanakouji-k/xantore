@@ -12,18 +12,21 @@ export const productApi = api.injectEndpoints({
       query: () => ({
         url: `api/product/products`,
       }),
+      transformErrorResponse,
       providesTags: ["product"],
     }),
     getProductIngredients: builder.query<IProductAll, number>({
       query: () => ({
         url: `api/product/ingredients`,
       }),
+      transformErrorResponse,
       providesTags: ["product"],
     }),
     getProductIdIngredients: builder.query<IProductIngredients, number | null>({
       query: (id) => ({
         url: `api/product/${id}/ingredients`,
       }),
+      transformErrorResponse,
       providesTags: ["product-item"],
     }),
     createProduct: builder.mutation<TMessage, any>({

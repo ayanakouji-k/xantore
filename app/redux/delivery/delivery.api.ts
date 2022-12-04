@@ -11,12 +11,14 @@ export const deliveryApi = api.injectEndpoints({
       query: () => ({
         url: `api/delivery/all`,
       }),
+      transformErrorResponse,
       providesTags: ["delivery"],
     }),
     getDeliveryBaggage: builder.query<any, number>({
       query: (id) => ({
         url: `api/delivery/${id}/baggage`,
       }),
+      transformErrorResponse,
       providesTags: ["delivery-item"],
     }),
     postDeliveryOrder: builder.mutation<TMessage, any>({

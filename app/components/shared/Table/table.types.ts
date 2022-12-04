@@ -9,4 +9,6 @@ export interface ITable {
   total: number | undefined;
   rowKey?: string | GetRowKey<any>;
   setCurrent: (page: number) => void;
+  showExpand?: boolean;
+  expandableItems?: any;
 }

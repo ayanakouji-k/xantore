@@ -16,12 +16,14 @@ export const productionApi = api.injectEndpoints({
       query: () => ({
         url: `api/input/products`,
       }),
+      transformErrorResponse,
       providesTags: ["production", "production-income", "sale"],
     }),
     getProductionIngredients: builder.query<IProduction, number>({
       query: () => ({
         url: `api/input/ingredients`,
       }),
+      transformErrorResponse,
       providesTags: ["production-income"],
     }),
     createProduction: builder.mutation<TMessage, TPostProductionItem[]>({

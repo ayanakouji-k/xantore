@@ -4,6 +4,7 @@ import { BsFillInboxesFill } from "react-icons/bs";
 import { ImPriceTag } from "react-icons/im";
 import { HiUsers } from "react-icons/hi";
 import { TbShoppingCartPlus, TbBuildingFactory } from "react-icons/tb";
+import { MdDashboardCustomize } from "react-icons/md";
 export const routes: MenuProps["items"] = [
   { key: "/home", label: "Главная", icon: <BiHomeAlt /> },
   {
@@ -45,7 +46,12 @@ export const routes: MenuProps["items"] = [
   },
   {
     key: "/client",
-    label: "Клиент",
+    label: "Клиенты",
     icon: <HiUsers />,
+  },
+  {
+    key: "/users",
+    label: "Пользователи",
+    icon: <MdDashboardCustomize />,
   },
 ];

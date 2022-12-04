@@ -8,31 +8,16 @@ import { TSaleItem } from "../../../../redux/sale/sale.types";
 import { localeString } from "../../../../utils/numberLocaleString";
 import { TableContainer } from "../../../shared";
 
+import styles from "./table.module.scss";
+
 const SaleTable: React.FC = () => {
   const [current, setCurrent] = React.useState(1);
   const { data, isLoading } = useGetSaleAllQuery(1);
   const columns: ColumnsType<TSaleItem> = [
     {
-      title: "№",
-      dataIndex: "saleId",
-      key: "saleId",
-      width: 30,
-    },
-    {
       title: "Клиент",
       dataIndex: "client",
       key: "client",
-    },
-    {
-      title: "Названия",
-      dataIndex: "product",
-      key: "product",
-    },
-    {
-      title: "Количество",
-      dataIndex: "amount",
-      key: "amount",
-      render: (number) => <div>{localeString(number, "штук")}</div>,
     },
     {
       title: "Оплачено",
@@ -48,11 +33,14 @@ const SaleTable: React.FC = () => {
       title: "Ожидается",
       dataIndex: "debtPrice",
       key: "debtPrice",
-      render: (number) => (
-        <Tag icon={<CheckCircleOutlined spin />} color="error">
-          {localeString(number, "сум")}
-        </Tag>
-      ),
+      render: (number) =>
+        number ? (
+          <Tag icon={<CheckCircleOutlined spin />} color="error">
+            {localeString(number, "сум")}
+          </Tag>
+        ) : (
+          <Tag color="#2db7f5">полностью оплатил</Tag>
+        ),
     },
     {
       title: "Сумма",
@@ -66,6 +54,28 @@ const SaleTable: React.FC = () => {
       key: "createdAt",
     },
   ];
+  const productsList = (record: any) => (
+    <ul className={styles.items}>
+      {record.products.map((prev: any, i: number) => (
+        <li key={i}>
+          <Tag color="cyan">{i + 1}</Tag>
+          <Tag color="green">{prev.productItem.product.name}</Tag>
+          <Tag color="geekblue">{prev.itemAmount} штук</Tag>
+          <Tag color="gold">
+            {localeString(prev.productItem.product.price, "сум")}
+          </Tag>
+          <Tag color="purple">{prev.productItem.warehouse.name}</Tag>
+          <Tag color="#87d068">
+            Сумма:{" "}
+            {localeString(
+              prev.itemAmount * prev.productItem.product.price,
+              "сум"
+            )}
+          </Tag>
+        </li>
+      ))}
+    </ul>
+  );
   return (
     <TableContainer
       title="Продажа"
@@ -76,6 +86,8 @@ const SaleTable: React.FC = () => {
       current={current}
       total={11}
       setCurrent={setCurrent}
+      showExpand={true}
+      expandableItems={productsList}
     />
   );
 };

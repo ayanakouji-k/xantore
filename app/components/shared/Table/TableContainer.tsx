@@ -12,6 +12,8 @@ const TableContainer: React.FC<ITable> = ({
   total,
   setCurrent,
   rowKey,
+  showExpand = false,
+  expandableItems,
 }) => {
   const onChange: PaginationProps["onChange"] = (page) => {
     setCurrent(page);
@@ -24,6 +26,10 @@ const TableContainer: React.FC<ITable> = ({
             {title}
           </b>
         )}
+        expandable={{
+          expandedRowRender: expandableItems,
+          showExpandColumn: showExpand,
+        }}
         pagination={false}
         footer={() => (
           <Pagination

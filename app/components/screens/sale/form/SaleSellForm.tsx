@@ -91,8 +91,8 @@ const SaleSellForm: React.FC = () => {
           />
         </Form.Item>
         <div style={{ display: "flex", gap: "10px" }}>
-          <UiButton loading={isLoading} text="Сохранить" />
           <Button
+            type="primary"
             onClick={() =>
               dispatch(
                 addSaleItem({
@@ -106,6 +106,7 @@ const SaleSellForm: React.FC = () => {
           >
             Добавить +
           </Button>
+          <UiButton loading={isLoading} text="Сохранить" />
         </div>
       </Form>
     </div>

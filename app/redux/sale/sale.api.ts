@@ -12,11 +12,12 @@ export const saleApi = api.injectEndpoints({
       query: () => ({
         url: `api/sale/all`,
       }),
+      transformErrorResponse,
       providesTags: ["sale"],
     }),
     createSale: builder.mutation<TMessage, TCreateSale>({
       query: (body) => ({
-        url: "api/sale/create",
+        url: "api/sale/sell",
         method: "POST",
         body,
       }),

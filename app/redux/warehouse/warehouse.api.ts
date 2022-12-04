@@ -12,19 +12,36 @@ export const warehouseApi = api.injectEndpoints({
       query: () => ({
         url: `api/warehouse/products`,
       }),
+      transformErrorResponse,
       providesTags: ["warehouse"],
     }),
     getWarehouseIngredients: builder.query<IWarehouseItems, number>({
       query: () => ({
         url: `api/warehouse/ingredients`,
       }),
+      transformErrorResponse,
       providesTags: ["warehouse"],
     }),
     getWarehouseItems: builder.query<IWarehouseIdItems, number>({
       query: (id) => ({
         url: `api/warehouse/${id}/items`,
       }),
-      providesTags: ["warehouse-item", "product-item"],
+      transformErrorResponse,
+      providesTags: ["warehouse-item", "product-item", "sale"],
+    }),
+    getWarehouseProductItems: builder.query<IWarehouseIdItems, number>({
+      query: () => ({
+        url: `api/warehouse/products/items`,
+      }),
+      transformErrorResponse,
+      providesTags: ["warehouse-item", "product-item", "sale"],
+    }),
+    getWarehouseIngredientItems: builder.query<IWarehouseIdItems, number>({
+      query: () => ({
+        url: `api/warehouse/ingredient/items`,
+      }),
+      transformErrorResponse,
+      providesTags: ["warehouse-item", "product-item", "sale"],
     }),
     createWarehouse: builder.mutation<TMessage, any>({
       query: (body) => ({
@@ -52,7 +69,7 @@ export const warehouseApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["warehouse"],
+      invalidatesTags: ["warehouse", "warehouse-item"],
       transformResponse,
       transformErrorResponse,
     }),
