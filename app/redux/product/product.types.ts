@@ -5,26 +5,15 @@ export type TProductItem = {
 };
 export type TProductItemIngredients = {
   productItem: {
-    product: {
-      productId: number;
-      price: number;
-      name: string;
-    };
+    createdAt: string;
+    product: string;
     productAmount: number;
+    createdBy: string;
+    warehouseId: number;
     productItemId: number;
-    warehouse: {
-      warehouseId: number;
-      name: string;
-      type: string;
-    };
+    warehouseName: string;
+    productPrice: number;
   };
   ingredientId: number;
-  createdAt: string;
   itemAmount: number;
 };
-export interface IProductIngredients {
-  data: TProductItemIngredients[];
-}
-export interface IProductAll {
-  data: TProductItem[];
-}

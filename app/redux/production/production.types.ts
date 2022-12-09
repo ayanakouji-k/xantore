@@ -20,6 +20,3 @@ export type TPostIncomeIngredientItem = {
   price: number;
   employerId: number;
 };
-export interface IProduction {
-  data: TProductionItem[];
-}

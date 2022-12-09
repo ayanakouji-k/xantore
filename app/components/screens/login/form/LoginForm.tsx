@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input } from "antd";
 import Cookies from "js-cookie";
 
 import { useStepAuthLoginMutation } from "../../../../redux/index.endpoints";
@@ -20,19 +20,20 @@ const LoginForm: React.FC = () => {
     useStepAuthLoginMutation();
 
   const onFinish = (values: TStepAuthLogin) => {
+    form.resetFields();
     stepAuthLogin(values);
   };
   React.useEffect(() => {
     if (isSuccess) {
-      router.push("/home");
-      form.resetFields();
+      router.push("/");
     }
   }, [isSuccess]);
   React.useEffect(() => {
     if (authLogin) {
       Cookies.set("token", authLogin.data);
+      Cookies.set("role", "DRIVER");
     }
-  }, [authLogin, isSuccess]);
+  }, [isSuccess]);
   return (
     <div className={styles.form}>
       <div className={styles.logo}>

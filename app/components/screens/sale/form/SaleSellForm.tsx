@@ -17,10 +17,9 @@ import styles from "./form.module.scss";
 import SaleSellItems from "./SaleSellItems";
 
 const SaleSellForm: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { saleItems } = useAppSelector((state) => state.sale);
   const [form] = Form.useForm();
-  const { totalSum } = useAppSelector((state) => state.sale);
+  const dispatch = useAppDispatch();
+  const { saleItems, totalSum } = useAppSelector((state) => state.sale);
   const { data: client } = useGetClientAllQuery(1);
   const [createSale, { isLoading, isSuccess, isError }] =
     useCreateSaleMutation();
@@ -68,7 +67,7 @@ const SaleSellForm: React.FC = () => {
             }
           >
             {client?.data.map((prev) => (
-              <Select.Option key={prev.id} value={prev.id}>
+              <Select.Option key={prev.outputId} value={prev.outputId}>
                 {prev.name}
               </Select.Option>
             ))}

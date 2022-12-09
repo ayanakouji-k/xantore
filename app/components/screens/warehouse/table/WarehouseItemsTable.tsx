@@ -8,7 +8,9 @@ import { localeString } from "../../../../utils/numberLocaleString";
 const WarehouseItemsTable: React.FC<any> = ({ id }) => {
   const [current, setCurrent] = React.useState(1);
   const [warehouseName, setWarehouseName] = React.useState<string | null>("");
-  const { data: warehouseItems, isLoading } = useGetWarehouseItemsQuery(id);
+  const { data: warehouseItems, isLoading } = useGetWarehouseItemsQuery(id, {
+    skip: !id,
+  });
   const columns: ColumnsType<any> = [
     {
       title: "№",
@@ -17,10 +19,14 @@ const WarehouseItemsTable: React.FC<any> = ({ id }) => {
       width: 30,
     },
     {
+      title: "Добавил",
+      dataIndex: "createdBy",
+      key: "createdBy",
+    },
+    {
       title: "Названия",
-      dataIndex: "name",
-      key: "name",
-      render: (_, record: { product: any }) => <div>{record.product.name}</div>,
+      dataIndex: "product",
+      key: "product",
     },
     {
       title: "Количество",
@@ -31,19 +37,16 @@ const WarehouseItemsTable: React.FC<any> = ({ id }) => {
     },
     {
       title: "Цена",
-      dataIndex: "productAmount",
-      key: "productAmount",
-      render: (_, record: { product: any }) => (
-        <div>{localeString(record.product.price, "сум")}</div>
+      dataIndex: "productPrice",
+      key: "productPrice",
+      render: (_, record: { productPrice: any }) => (
+        <div>{localeString(record.productPrice, "сум")}</div>
       ),
     },
     {
       title: "Склад",
       dataIndex: "warehouseName",
       key: "warehouseName",
-      render: (_, record: { warehouse: any }) => (
-        <div>{record.warehouse.name}</div>
-      ),
     },
   ];
   React.useEffect(() => {

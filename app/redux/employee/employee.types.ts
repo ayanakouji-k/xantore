@@ -5,11 +5,5 @@ export type TEmployeeItem = {
   name: string;
   phoneNumber: string;
   comment: string;
-  balance: {
-    amount: number;
-  };
+  balance: number;
 };
-export interface IEmployee {
-  data: TEmployeeItem[];
-  message: string;
-}

@@ -5,6 +5,7 @@ import { productionApi } from "./production/production.api";
 import { saleApi } from "./sale/sale.api";
 import { clientApi } from "./client/client.api";
 import { authApi } from "./auth/auth.api";
+import { deliveryApi } from "./delivery/delivery.api";
 export const {
   useGetEmployeeQuery,
   useCreateEmployeeMutation,
@@ -28,11 +29,28 @@ export const {
   useEditProductMutation,
 } = productApi;
 export const {
-  useGetProductionAllQuery,
+  useGetProductionProductsQuery,
   useCreateProductionMutation,
   useCreateIncomeIngredientMutation,
   useGetProductionIngredientsQuery,
 } = productionApi;
 export const { useGetSaleAllQuery, useCreateSaleMutation } = saleApi;
 export const { useGetClientAllQuery, useCreateClientMutation } = clientApi;
-export const { useCreateUserMutation, useStepAuthLoginMutation } = authApi;
+export const {
+  useCreateUserMutation,
+  useStepAuthLoginMutation,
+  useGetAuthAllUsersQuery,
+  useGetAuthMeQuery,
+} = authApi;
+export const {
+  useGetDeliveryAllQuery,
+  useGetDeliveryBaggageIdQuery,
+  useGetDeliveryOrdersIdQuery,
+  useGetDeliveryOrdersQuery,
+  useGetDeliveryWaitReturnsIdQuery,
+  useGetDeliveryWaitReturnsQuery,
+  usePostDeliveryAcceptIdMutation,
+  usePostDeliveryOrderMutation,
+  usePostDeliveryRejectIdMutation,
+  usePostDeliveryReturnProductMutation,
+} = deliveryApi;

@@ -4,22 +4,12 @@ export type TWarehouseItem = {
   type: string;
 };
 export type TWarehouseIdItem = {
-  product: {
-    productId: number;
-    price: number;
-    name: string;
-  };
+  createdAt: string;
+  product: string;
   productAmount: number;
+  createdBy: string;
+  warehouseId: number;
   productItemId: number;
-  warehouse: {
-    warehouseId: number;
-    name: string;
-    type: string;
-  };
+  warehouseName: string;
+  productPrice: number;
 };
-export interface IWarehouseIdItems {
-  data: TWarehouseIdItem[];
-}
-export interface IWarehouseItems {
-  data: TWarehouseItem[];
-}

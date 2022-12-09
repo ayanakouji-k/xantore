@@ -23,11 +23,13 @@ export const api = createApi({
     "product",
     "product-item",
     "production",
-    "production-income",
+    "production-item",
     "sale",
     "client",
     "delivery",
     "delivery-item",
+    "auth",
+    "auth-item",
   ],
   endpoints: (builder) => ({
     getUsers: builder.query<TUser[], string>({

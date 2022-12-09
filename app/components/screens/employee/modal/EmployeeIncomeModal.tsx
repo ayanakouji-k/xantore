@@ -68,7 +68,7 @@ const EmployeeIncomeModal: React.FC = () => {
                     key={prev.warehouseId}
                     value={prev.warehouseId}
                   >
-                    {prev.name} ({prev.type})
+                    {prev.name}
                   </Select.Option>
                 ))}
               </Select>
@@ -84,7 +84,7 @@ const EmployeeIncomeModal: React.FC = () => {
                     key={prev.productItemId}
                     value={prev.productItemId}
                   >
-                    {prev.product.name} ({prev.productAmount}) (кг)
+                    {prev.product} ({prev.productAmount}) (кг)
                   </Select.Option>
                 ))}
               </Select>

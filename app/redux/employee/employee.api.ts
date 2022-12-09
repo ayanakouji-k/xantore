@@ -1,14 +1,15 @@
+import { ServerResponse } from "./../index.types";
 import {
   transformErrorResponse,
   transformResponse,
 } from "../../utils/transformResponse";
 import { api } from "../index.api";
 import { TMessage } from "../index.types";
-import { IEmployee, TEmployeeItem } from "./employee.types";
+import { TEmployeeItem } from "./employee.types";
 
 export const employeeApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getEmployee: builder.query<IEmployee, number>({
+    getEmployee: builder.query<ServerResponse<TEmployeeItem>, number>({
       query: () => ({
         url: `api/employee/all`,
       }),

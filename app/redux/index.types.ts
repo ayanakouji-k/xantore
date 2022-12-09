@@ -6,3 +6,6 @@ export type TMessage = {
   massage: string;
   data: string;
 };
+export interface ServerResponse<T> {
+  data: T[];
+}

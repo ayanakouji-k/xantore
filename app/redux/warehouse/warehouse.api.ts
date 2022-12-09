@@ -1,42 +1,54 @@
+import { ServerResponse } from "./../index.types";
 import {
   transformErrorResponse,
   transformResponse,
 } from "../../utils/transformResponse";
 import { api } from "../index.api";
 import { TMessage } from "../index.types";
-import { IWarehouseIdItems, IWarehouseItems } from "./warehouse.types";
+import { TWarehouseIdItem, TWarehouseItem } from "./warehouse.types";
 
 export const warehouseApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getWarehouseProducts: builder.query<IWarehouseItems, number>({
-      query: () => ({
-        url: `api/warehouse/products`,
-      }),
-      transformErrorResponse,
-      providesTags: ["warehouse"],
-    }),
-    getWarehouseIngredients: builder.query<IWarehouseItems, number>({
+    getWarehouseProducts: builder.query<ServerResponse<TWarehouseItem>, number>(
+      {
+        query: () => ({
+          url: `api/warehouse/products`,
+        }),
+        transformErrorResponse,
+        providesTags: ["warehouse"],
+      }
+    ),
+    getWarehouseIngredients: builder.query<
+      ServerResponse<TWarehouseItem>,
+      number
+    >({
       query: () => ({
         url: `api/warehouse/ingredients`,
       }),
       transformErrorResponse,
       providesTags: ["warehouse"],
     }),
-    getWarehouseItems: builder.query<IWarehouseIdItems, number>({
+    getWarehouseItems: builder.query<ServerResponse<TWarehouseIdItem>, number>({
       query: (id) => ({
         url: `api/warehouse/${id}/items`,
       }),
       transformErrorResponse,
       providesTags: ["warehouse-item", "product-item", "sale"],
     }),
-    getWarehouseProductItems: builder.query<IWarehouseIdItems, number>({
+    getWarehouseProductItems: builder.query<
+      ServerResponse<TWarehouseIdItem>,
+      number
+    >({
       query: () => ({
         url: `api/warehouse/products/items`,
       }),
       transformErrorResponse,
       providesTags: ["warehouse-item", "product-item", "sale"],
     }),
-    getWarehouseIngredientItems: builder.query<IWarehouseIdItems, number>({
+    getWarehouseIngredientItems: builder.query<
+      ServerResponse<TWarehouseIdItem>,
+      number
+    >({
       query: () => ({
         url: `api/warehouse/ingredient/items`,
       }),
@@ -69,7 +81,7 @@ export const warehouseApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["warehouse", "warehouse-item"],
+      invalidatesTags: ["warehouse-item"],
       transformResponse,
       transformErrorResponse,
     }),

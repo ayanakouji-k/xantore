@@ -2,35 +2,44 @@ import React from "react";
 import { InputNumber, Select } from "antd";
 
 import {
-  useGetWarehouseItemsQuery,
+  useGetDeliveryBaggageIdQuery,
   useGetWarehouseProductItemsQuery,
 } from "../../../../redux/index.endpoints";
 
 import styles from "./form.module.scss";
 import { localeString } from "../../../../utils/numberLocaleString";
-import { useAppDispatch } from "../../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../../hooks";
 import {
   deleteSaleProductItem,
   setSaleProductAmount,
   setSaleProductId,
 } from "../../../../redux/sale/sale.slice";
 import { AiFillDelete } from "react-icons/ai";
+import Cookies from "js-cookie";
 
 const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
   const dispatch = useAppDispatch();
+  const role = Cookies.get("role");
+  const userId = Cookies.get("userId");
+
+  const [stateUserId, setStateUserId] = React.useState(0);
+  const [stateRole, setStateRole] = React.useState("");
 
   const { data: warehouseItems, isLoading } =
     useGetWarehouseProductItemsQuery(1);
+  const { data: deliveryBaggage } = useGetDeliveryBaggageIdQuery(stateUserId, {
+    skip: !stateUserId,
+  });
   const handleChange = (value: number) => {
-    const findItem = warehouseItems?.data.find(
-      (prev) => prev.productItemId === value
-    );
+    const findItem = (
+      stateRole === "DRIVER" ? deliveryBaggage : warehouseItems
+    )?.data.find((prev) => prev.productItemId === value);
     if (findItem) {
       dispatch(
         setSaleProductId({
           id,
           productItemId: findItem.productItemId,
-          price: findItem.product.price,
+          price: findItem.productPrice,
         })
       );
     }
@@ -41,6 +50,12 @@ const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
   const onDeleteProductItem = () => {
     dispatch(deleteSaleProductItem(id));
   };
+  React.useEffect(() => {
+    if (role) {
+      setStateUserId(Number(userId));
+      setStateRole(role);
+    }
+  }, [userId, role]);
   return (
     <div className={styles.item}>
       <div className={styles.itemInput}>
@@ -50,10 +65,13 @@ const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
           onChange={handleChange}
           loading={isLoading}
         >
-          {warehouseItems?.data.map((prev) => (
+          {(stateRole === "DRIVER"
+            ? deliveryBaggage
+            : warehouseItems
+          )?.data.map((prev) => (
             <Select.Option key={prev.productItemId} value={prev.productItemId}>
-              {prev.product.name} / {prev.productAmount} штук /{" "}
-              {localeString(prev.product.price, "сум")} / {prev.warehouse.name}
+              {prev.product} / {prev.productAmount} штук /{" "}
+              {localeString(prev.productPrice, "сум")} / {prev.warehouseName}
             </Select.Option>
           ))}
         </Select>

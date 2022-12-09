@@ -15,7 +15,7 @@ const SpaceContainer: React.FC<TSpace> = ({ items }) => {
             key={i}
             placement="leftTop"
             okType="danger"
-            title="Вы уверены, что хотите удалить эту задачу?"
+            title="Вы уверены!"
             onConfirm={onClick}
             okText="Да"
             cancelText="Нет"

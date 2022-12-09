@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export default function middleware(req: NextRequest) {
   const verify = req.cookies.get("token");
+  const role = req.cookies.get("role");
   const url = req.url;
   if (!verify && url.includes("/home")) {
     return NextResponse.redirect("https://xantore.vercel.app/");
@@ -11,6 +12,10 @@ export default function middleware(req: NextRequest) {
   }
 
   if (verify && url === "https://xantore.vercel.app/") {
-    return NextResponse.redirect("https://xantore.vercel.app/home");
+    if (role?.value === "DRIVER") {
+      return NextResponse.redirect("https://xantore.vercel.app/sale/sell");
+    } else {
+      return NextResponse.redirect("https://xantore.vercel.app/home");
+    }
   }
 }

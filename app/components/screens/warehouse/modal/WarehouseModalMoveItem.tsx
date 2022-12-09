@@ -85,7 +85,7 @@ const WarehouseModalMoveItem: React.FC = () => {
                     key={prev.productItemId}
                     value={prev.productItemId}
                   >
-                    {prev.product.name} ({prev.productAmount}) кг
+                    {prev.product} ({prev.productAmount}) кг
                   </Select.Option>
                 ))}
               </Select>
@@ -121,7 +121,7 @@ const WarehouseModalMoveItem: React.FC = () => {
                     key={prev.productItemId}
                     value={prev.productItemId}
                   >
-                    {prev.product.name} ({prev.productAmount}) кг
+                    {prev.product} ({prev.productAmount}) кг
                   </Select.Option>
                 ))}
               </Select>

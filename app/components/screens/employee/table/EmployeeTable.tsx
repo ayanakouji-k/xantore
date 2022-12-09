@@ -29,11 +29,6 @@ const EmployeeTable: React.FC = () => {
       width: 30,
     },
     {
-      title: "Добавлено",
-      dataIndex: "createdAt",
-      key: "createdAt",
-    },
-    {
       title: "Добавил",
       dataIndex: "createdBy",
       key: "createdBy",
@@ -57,9 +52,12 @@ const EmployeeTable: React.FC = () => {
       title: "Баланс",
       dataIndex: "amount",
       key: "amount",
-      render: (_, record: { balance: { amount: number } }) => (
-        <StatisticsNumber number={record.balance.amount} />
-      ),
+      render: (_, record) => <StatisticsNumber number={record.balance} />,
+    },
+    {
+      title: "Добавлено",
+      dataIndex: "createdAt",
+      key: "createdAt",
     },
     {
       title: "Действие",
@@ -67,7 +65,7 @@ const EmployeeTable: React.FC = () => {
       key: "action",
       align: "center",
       width: 30,
-      render: (_, record: { employeeId: number }) => (
+      render: (_, record) => (
         <SpaceContainer
           items={[
             {

@@ -48,10 +48,10 @@ const ProductModal: React.FC = () => {
     { isLoading: editLoading, isSuccess: editSuccess, isError: editError },
   ] = useEditProductMutation();
 
-  const warehouseId = productIdItems?.data[0].productItem.warehouse.warehouseId;
+  const warehouseId = productIdItems?.data[0].productItem.warehouseId;
   const filterProductIdItems = productIdItems?.data.map((prev) => {
     return {
-      productItemId: prev.productItem.product.productId,
+      productItemId: prev.productItem.productItemId,
       amount: prev.itemAmount,
     };
   });
@@ -153,9 +153,9 @@ const ProductModal: React.FC = () => {
                 {warehouseItems?.data.map((prev) => (
                   <Select.Option
                     key={prev.productItemId}
-                    value={prev.product.productId}
+                    value={prev.productItemId}
                   >
-                    {prev.product.name} / {prev.productAmount} кг
+                    {prev.product} / {prev.productAmount} кг
                   </Select.Option>
                 ))}
               </Select>

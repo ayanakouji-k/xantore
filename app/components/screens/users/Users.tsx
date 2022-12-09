@@ -4,6 +4,7 @@ import Meta from "../../../utils/Meta";
 import { Heading } from "../../shared";
 import { UiButton } from "../../ui";
 import { UsersModal } from "./modal";
+import { UsersTable } from "./table";
 
 const Users: React.FC = () => {
   const { handleClick } = useSetModalOpen();
@@ -15,6 +16,7 @@ const Users: React.FC = () => {
         extra={[<UiButton text="Добавить" onClick={handleClick} />]}
       />
       <UsersModal />
+      <UsersTable />
     </>
   );
 };

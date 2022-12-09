@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Form, Spin } from "antd";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
 
 import { IForm } from "./form.types";
 
 import styles from "./form.module.scss";
-import { UiButton } from "../../ui";
 
 const FormContainer: React.FC<IForm> = ({
   form,
@@ -74,13 +73,12 @@ const FormContainer: React.FC<IForm> = ({
                         justifyContent: "end",
                       }}
                     >
-                      <div style={{ width: "100px" }}>
-                        <UiButton
-                          text="Удалить"
-                          color="crimson"
-                          onClick={() => remove(name)}
-                        />
-                      </div>
+                      <AiFillDelete
+                        color="crimson"
+                        size={30}
+                        cursor="pointer"
+                        onClick={() => remove(name)}
+                      />
                     </div>
                   </div>
                 ))}

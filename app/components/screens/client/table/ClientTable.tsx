@@ -11,9 +11,14 @@ const ClientTable: React.FC = () => {
   const columns: ColumnsType<TClientItem> = [
     {
       title: "№",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "outputId",
+      key: "outputId",
       width: 30,
+    },
+    {
+      title: "Добавил",
+      dataIndex: "createdBy",
+      key: "createdBy",
     },
     {
       title: "Имя",
@@ -34,12 +39,7 @@ const ClientTable: React.FC = () => {
       title: "Баланс",
       dataIndex: "balance",
       key: "balance",
-      render: (
-        _,
-        record: {
-          balance: { amount: number };
-        }
-      ) => <StatisticsNumber number={record.balance.amount} />,
+      render: (_, record) => <StatisticsNumber number={record.balance} />,
     },
     {
       title: "Добавлено",

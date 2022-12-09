@@ -1,6 +1,6 @@
 import { ColumnsType } from "antd/es/table";
 import React from "react";
-import { useGetProductionAllQuery } from "../../../../redux/index.endpoints";
+import { useGetProductionProductsQuery } from "../../../../redux/index.endpoints";
 import { TPostIncomeIngredientItem } from "../../../../redux/production/production.types";
 
 import { localeString } from "../../../../utils/numberLocaleString";
@@ -9,7 +9,7 @@ import { TableContainer } from "../../../shared";
 const ProductionTable: React.FC = () => {
   const [current, setCurrent] = React.useState(1);
   const { data: productionItems, isLoading } =
-    useGetProductionAllQuery(current);
+    useGetProductionProductsQuery(current);
   const columns: ColumnsType<TPostIncomeIngredientItem> = [
     {
       title: "№",

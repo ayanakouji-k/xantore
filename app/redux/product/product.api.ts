@@ -1,28 +1,32 @@
+import { ServerResponse } from "./../index.types";
 import {
   transformErrorResponse,
   transformResponse,
 } from "../../utils/transformResponse";
 import { api } from "../index.api";
 import { TMessage } from "../index.types";
-import { IProductAll, IProductIngredients } from "./product.types";
+import { TProductItem, TProductItemIngredients } from "./product.types";
 
 export const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getProductProducts: builder.query<IProductAll, number>({
+    getProductProducts: builder.query<ServerResponse<TProductItem>, number>({
       query: () => ({
         url: `api/product/products`,
       }),
       transformErrorResponse,
       providesTags: ["product"],
     }),
-    getProductIngredients: builder.query<IProductAll, number>({
+    getProductIngredients: builder.query<ServerResponse<TProductItem>, number>({
       query: () => ({
         url: `api/product/ingredients`,
       }),
       transformErrorResponse,
       providesTags: ["product"],
     }),
-    getProductIdIngredients: builder.query<IProductIngredients, number | null>({
+    getProductIdIngredients: builder.query<
+      ServerResponse<TProductItemIngredients>,
+      number | null
+    >({
       query: (id) => ({
         url: `api/product/${id}/ingredients`,
       }),

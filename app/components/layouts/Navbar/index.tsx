@@ -4,8 +4,9 @@ import Image from "next/image";
 import { Drawer, Menu, MenuProps } from "antd";
 import Link from "next/link";
 import { MdClear } from "react-icons/md";
+import Cookies from "js-cookie";
 
-import { routes } from "../routes";
+import { routes, routesDriver } from "../routes";
 import { selectNavbar } from "../../../redux/navbar/navbar.selectors";
 
 import { isNavbarShow } from "../../../redux/navbar/navbar.slice";
@@ -19,8 +20,10 @@ const Navbar: React.FC = () => {
   const dispatch = useAppDispatch();
   const { navShow } = useAppSelector(selectNavbar);
   const { isMobile } = useResponsive(992);
+  const role = Cookies.get("role");
 
   const [drawer, setDrawer] = React.useState(false);
+  const [stateRoute, setStateRoute] = React.useState<any>(null);
 
   const onClick: MenuProps["onClick"] = (e) => {
     router.push(e.key);
@@ -38,6 +41,13 @@ const Navbar: React.FC = () => {
       setDrawer(navShow);
     }
   }, [navShow, isMobile]);
+  React.useEffect(() => {
+    if (role === "DRIVER") {
+      setStateRoute(routesDriver);
+    } else {
+      setStateRoute(routes);
+    }
+  }, [role]);
   return (
     <Drawer
       placement="left"
@@ -49,7 +59,7 @@ const Navbar: React.FC = () => {
     >
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <Link href="/" className={styles.link}>
+          <Link href="/home" className={styles.link}>
             <Image src={logo} width={40} alt="Logo" />
             <h3>Xantore</h3>
           </Link>
@@ -66,7 +76,7 @@ const Navbar: React.FC = () => {
             mode="inline"
             selectedKeys={[router.pathname]}
             onClick={onClick}
-            items={routes}
+            items={stateRoute}
           />
         </div>
       </div>

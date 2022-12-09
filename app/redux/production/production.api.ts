@@ -1,3 +1,4 @@
+import { ServerResponse } from "./../index.types";
 import {
   transformErrorResponse,
   transformResponse,
@@ -5,26 +6,32 @@ import {
 import { api } from "../index.api";
 import { TMessage } from "../index.types";
 import {
-  IProduction,
   TPostIncomeIngredientItem,
   TPostProductionItem,
+  TProductionItem,
 } from "./production.types";
 
 export const productionApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getProductionAll: builder.query<IProduction, number>({
+    getProductionProducts: builder.query<
+      ServerResponse<TProductionItem>,
+      number
+    >({
       query: () => ({
         url: `api/input/products`,
       }),
       transformErrorResponse,
-      providesTags: ["production", "production-income", "sale"],
+      providesTags: ["production", "production-item", "sale"],
     }),
-    getProductionIngredients: builder.query<IProduction, number>({
+    getProductionIngredients: builder.query<
+      ServerResponse<TProductionItem>,
+      number
+    >({
       query: () => ({
         url: `api/input/ingredients`,
       }),
       transformErrorResponse,
-      providesTags: ["production-income"],
+      providesTags: ["production-item"],
     }),
     createProduction: builder.mutation<TMessage, TPostProductionItem[]>({
       query: (body) => ({
@@ -45,7 +52,7 @@ export const productionApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["warehouse-item", "production-income"],
+      invalidatesTags: ["warehouse-item", "production-item"],
       transformResponse,
       transformErrorResponse,
     }),

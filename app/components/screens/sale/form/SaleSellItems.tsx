@@ -6,7 +6,6 @@ import styles from "./form.module.scss";
 
 const SaleSellItems: React.FC = () => {
   const { saleItems } = useAppSelector((state) => state.sale);
-  console.log(saleItems);
   return (
     <div className={styles.items}>
       {saleItems.map((prev, i) => (

@@ -53,7 +53,7 @@ const ProductionForm: React.FC = () => {
                           key={prev.productItemId}
                           value={prev.productItemId}
                         >
-                          {prev.product.name} / {prev.warehouse.name}
+                          {prev.product} / {prev.warehouseName}
                         </Select.Option>
                       ))}
                     </Select>
@@ -91,7 +91,7 @@ const ProductionForm: React.FC = () => {
             <Button
               type="primary"
               onClick={() => add()}
-              style={{ marginRight: 20 }}
+              style={{ marginRight: 20, marginBottom: 10 }}
             >
               Добавить +
             </Button>

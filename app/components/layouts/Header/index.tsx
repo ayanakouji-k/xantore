@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import { TfiAlignLeft } from "react-icons/tfi";
 import { BiLogOutCircle } from "react-icons/bi";
+import { Popover } from "antd";
 
 import { isNavbarShow } from "../../../redux/navbar/navbar.slice";
 import { selectNavbar } from "../../../redux/navbar/navbar.selectors";
@@ -10,45 +12,50 @@ import { selectNavbar } from "../../../redux/navbar/navbar.selectors";
 import user from "../../../assets/images/user.png";
 import styles from "./header.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { Popover } from "antd";
 import { UiButton } from "../../ui";
-import Cookies from "js-cookie";
+import { useGetAuthMeQuery } from "../../../redux/index.endpoints";
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { navShow } = useAppSelector(selectNavbar);
   const router = useRouter();
 
   const token = Cookies.get("token");
 
   const [open, setOpen] = React.useState(false);
+
+  const { data: authMe, isSuccess } = useGetAuthMeQuery(1, {
+    skip: !token,
+  });
+
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
   };
-
   const hide = () => {
     setOpen(false);
   };
-  const { navShow } = useAppSelector(selectNavbar);
-
-  const onRemoveToken = () => {
+  const logOut = () => {
     Cookies.remove("token");
+    Cookies.remove("role");
+    Cookies.remove("userId");
+    router.push("/");
     hide();
   };
   const content = (
     <div>
       <UiButton
         color="crimson"
-        onClick={onRemoveToken}
+        onClick={logOut}
         icon={<BiLogOutCircle />}
         text="Выйти из системы"
       />
     </div>
   );
   React.useEffect(() => {
-    if (!token) {
-      router.push("/");
+    if (isSuccess) {
+      Cookies.set("userId", String(authMe.data.userId));
     }
-  }, [token]);
+  }, [isSuccess]);
   return (
     <div className={styles.header}>
       <div
@@ -66,8 +73,8 @@ const Header: React.FC = () => {
       >
         <div className={styles.user}>
           <div>
-            <h4>Quwanish</h4>
-            <p>admin</p>
+            <h4>{authMe?.data.name}</h4>
+            <p>{authMe?.data.role?.toLocaleLowerCase()}</p>
           </div>
           <Image src={user} width={45} alt="User" />
         </div>

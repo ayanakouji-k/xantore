@@ -3,7 +3,11 @@ import { BiHomeAlt, BiStoreAlt } from "react-icons/bi";
 import { BsFillInboxesFill } from "react-icons/bs";
 import { ImPriceTag } from "react-icons/im";
 import { HiUsers } from "react-icons/hi";
-import { TbShoppingCartPlus, TbBuildingFactory } from "react-icons/tb";
+import {
+  TbShoppingCartPlus,
+  TbBuildingFactory,
+  TbTruckDelivery,
+} from "react-icons/tb";
 import { MdDashboardCustomize } from "react-icons/md";
 export const routes: MenuProps["items"] = [
   { key: "/home", label: "Главная", icon: <BiHomeAlt /> },
@@ -45,6 +49,11 @@ export const routes: MenuProps["items"] = [
     ],
   },
   {
+    key: "/delivery",
+    label: "Доставщик",
+    icon: <TbTruckDelivery />,
+  },
+  {
     key: "/client",
     label: "Клиенты",
     icon: <HiUsers />,
@@ -53,5 +62,12 @@ export const routes: MenuProps["items"] = [
     key: "/users",
     label: "Пользователи",
     icon: <MdDashboardCustomize />,
+  },
+];
+export const routesDriver: MenuProps["items"] = [
+  {
+    key: "/sale/sell",
+    label: "Продажа",
+    icon: <ImPriceTag />,
   },
 ];

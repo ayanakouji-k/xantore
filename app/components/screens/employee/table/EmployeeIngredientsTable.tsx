@@ -51,7 +51,7 @@ const EmployeeIngredientsTable: React.FC = () => {
   ];
   return (
     <TableContainer
-      title="Ингредиенты"
+      title="Товары"
       rowKey={({ inputId }) => inputId}
       columns={columns}
       data={productionIngredients?.data}

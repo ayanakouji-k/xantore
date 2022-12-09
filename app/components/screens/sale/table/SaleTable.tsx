@@ -4,11 +4,9 @@ import React from "react";
 import { CheckCircleOutlined } from "@ant-design/icons";
 
 import { useGetSaleAllQuery } from "../../../../redux/index.endpoints";
-import { TSaleItem } from "../../../../redux/sale/sale.types";
+import { TSaleItem, TSaleProductItem } from "../../../../redux/sale/sale.types";
 import { localeString } from "../../../../utils/numberLocaleString";
 import { TableContainer } from "../../../shared";
-
-import styles from "./table.module.scss";
 
 const SaleTable: React.FC = () => {
   const [current, setCurrent] = React.useState(1);
@@ -18,6 +16,11 @@ const SaleTable: React.FC = () => {
       title: "Клиент",
       dataIndex: "client",
       key: "client",
+    },
+    {
+      title: "Добавил",
+      dataIndex: "createdBy",
+      key: "createdBy",
     },
     {
       title: "Оплачено",
@@ -54,21 +57,21 @@ const SaleTable: React.FC = () => {
       key: "createdAt",
     },
   ];
-  const productsList = (record: any) => (
-    <ul className={styles.items}>
-      {record.products.map((prev: any, i: number) => (
+  const productsList = (record: TSaleProductItem) => (
+    <ul style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      {record.products?.map((prev, i: number) => (
         <li key={i}>
           <Tag color="cyan">{i + 1}</Tag>
-          <Tag color="green">{prev.productItem.product.name}</Tag>
+          <Tag color="green">{prev.productItem.product}</Tag>
           <Tag color="geekblue">{prev.itemAmount} штук</Tag>
           <Tag color="gold">
-            {localeString(prev.productItem.product.price, "сум")}
+            {localeString(prev.productItem.productPrice, "сум")}
           </Tag>
-          <Tag color="purple">{prev.productItem.warehouse.name}</Tag>
+          <Tag color="purple">{prev.productItem.warehouseName}</Tag>
           <Tag color="#87d068">
             Сумма:{" "}
             {localeString(
-              prev.itemAmount * prev.productItem.product.price,
+              prev.itemAmount * prev.productItem.productPrice,
               "сум"
             )}
           </Tag>

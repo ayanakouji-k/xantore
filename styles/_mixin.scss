@@ -1,0 +1,17 @@
+// АДАПТИВНЫЙ ЩРИФТ
+$minWidth: 320px;
+$maxWidth: 1600;
+$maxWidthContainer: 1140;
+@mixin adaptiv-font($pcSize, $mobSize, $maxSize) {
+  $addSize: $pcSize - $mobSize;
+  @if $maxSize==1 {
+    font-size: $pcSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      font-size: calc(
+        #{$mobSize + px} + #{$addSize}* ((100vw - 320px) / #{$maxWidthContainer - 320})
+      );
+    }
+  } @else {
+    font-size: calc(#{$mobSize + px} + #{$addSize}* ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+}

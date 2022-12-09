@@ -7,8 +7,8 @@ import { store } from "../app/redux";
 
 import Layout from "../app/components/layouts/Layout";
 
-import "antd/dist/reset.css";
 import "../styles/globals.scss";
+import "antd/dist/reset.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
