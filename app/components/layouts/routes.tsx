@@ -9,6 +9,7 @@ import {
   TbTruckDelivery,
 } from "react-icons/tb";
 import { MdDashboardCustomize } from "react-icons/md";
+import { FaBriefcase } from "react-icons/fa";
 export const routes: MenuProps["items"] = [
   { key: "/home", label: "Главная", icon: <BiHomeAlt /> },
   {
@@ -69,5 +70,10 @@ export const routesDriver: MenuProps["items"] = [
     key: "/sale/sell",
     label: "Продажа",
     icon: <ImPriceTag />,
+  },
+  {
+    key: "/delivery/baggage",
+    label: "Багаж",
+    icon: <FaBriefcase />,
   },
 ];

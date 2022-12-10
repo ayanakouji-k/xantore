@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
 import React from "react";
 import Meta from "../../../utils/Meta";
 import { Heading } from "../../shared";
-import SaleSellForm from "./form/SaleSellForm";
+
+const SaleSellForm = dynamic(() => import("./form/SaleSellForm"), {
+  ssr: false,
+});
 
 const SaleSell: React.FC = () => {
   return (

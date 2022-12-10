@@ -33,7 +33,7 @@ export const warehouseApi = api.injectEndpoints({
         url: `api/warehouse/${id}/items`,
       }),
       transformErrorResponse,
-      providesTags: ["warehouse-item", "product-item", "sale"],
+      providesTags: ["warehouse-item", "product-item", "sale", "delivery-item"],
     }),
     getWarehouseProductItems: builder.query<
       ServerResponse<TWarehouseIdItem>,
@@ -43,7 +43,7 @@ export const warehouseApi = api.injectEndpoints({
         url: `api/warehouse/products/items`,
       }),
       transformErrorResponse,
-      providesTags: ["warehouse-item", "product-item", "sale"],
+      providesTags: ["warehouse-item", "product-item", "sale", "delivery-item"],
     }),
     getWarehouseIngredientItems: builder.query<
       ServerResponse<TWarehouseIdItem>,

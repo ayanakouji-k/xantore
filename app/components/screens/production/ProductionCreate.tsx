@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
 import React from "react";
 import Meta from "../../../utils/Meta";
 import { Heading } from "../../shared";
-import ProductionForm from "./form/ProductionForm";
+
+const ProductionForm = dynamic(() => import("./form/ProductionForm"), {
+  ssr: false,
+});
 
 const ProductionCreate: React.FC = () => {
   return (

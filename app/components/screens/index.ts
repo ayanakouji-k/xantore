@@ -11,3 +11,4 @@ export { default as Client } from "./client/Client";
 export { default as Login } from "./login/Login";
 export { default as Users } from "./users/Users";
 export { default as Delivery } from "./delivery/Delivery";
+export { default as DeliveryBaggage } from "./delivery/DeliveryBaggage";

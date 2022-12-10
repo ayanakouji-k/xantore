@@ -8,7 +8,7 @@ import {
 
 import styles from "./form.module.scss";
 import { localeString } from "../../../../utils/numberLocaleString";
-import { useAppDispatch, useAppSelector } from "../../../../hooks";
+import { useAppDispatch } from "../../../../hooks";
 import {
   deleteSaleProductItem,
   setSaleProductAmount,
@@ -17,7 +17,7 @@ import {
 import { AiFillDelete } from "react-icons/ai";
 import Cookies from "js-cookie";
 
-const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
+const SaleSellItem: React.FC<any> = ({ index, id }) => {
   const dispatch = useAppDispatch();
   const role = Cookies.get("role");
   const userId = Cookies.get("userId");
@@ -28,7 +28,7 @@ const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
   const { data: warehouseItems, isLoading } =
     useGetWarehouseProductItemsQuery(1);
   const { data: deliveryBaggage } = useGetDeliveryBaggageIdQuery(stateUserId, {
-    skip: !stateUserId,
+    skip: !(role === "DRIVER") || !stateUserId,
   });
   const handleChange = (value: number) => {
     const findItem = (
@@ -65,15 +65,17 @@ const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
           onChange={handleChange}
           loading={isLoading}
         >
-          {(stateRole === "DRIVER"
-            ? deliveryBaggage
-            : warehouseItems
-          )?.data.map((prev) => (
-            <Select.Option key={prev.productItemId} value={prev.productItemId}>
-              {prev.product} / {prev.productAmount} штук /{" "}
-              {localeString(prev.productPrice, "сум")} / {prev.warehouseName}
-            </Select.Option>
-          ))}
+          {(stateRole === "DRIVER" ? deliveryBaggage : warehouseItems)?.data
+            .filter((prev) => prev.productAmount)
+            .map((prev) => (
+              <Select.Option
+                key={prev.productItemId}
+                value={prev.productItemId}
+              >
+                {prev.product} / {prev.productAmount} штук /{" "}
+                {localeString(prev.productPrice, "сум")} / {prev.warehouseName}
+              </Select.Option>
+            ))}
         </Select>
         <InputNumber
           onChange={handleInputChange}
@@ -94,6 +96,6 @@ const SaleSellItem: React.FC<any> = React.memo(({ index, id }) => {
       </div>
     </div>
   );
-});
+};
 
 export default SaleSellItem;

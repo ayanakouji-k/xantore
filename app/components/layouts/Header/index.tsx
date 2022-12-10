@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { TfiAlignLeft } from "react-icons/tfi";
 import { BiLogOutCircle } from "react-icons/bi";
-import { Popover } from "antd";
+import { Badge, Popover } from "antd";
 
 import { isNavbarShow } from "../../../redux/navbar/navbar.slice";
 import { selectNavbar } from "../../../redux/navbar/navbar.selectors";
@@ -14,6 +14,7 @@ import styles from "./header.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { UiButton } from "../../ui";
 import { useGetAuthMeQuery } from "../../../redux/index.endpoints";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();

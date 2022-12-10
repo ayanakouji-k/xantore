@@ -45,7 +45,7 @@ export const deliveryApi = api.injectEndpoints({
         url: `api/delivery/${id}/baggage`,
       }),
       transformErrorResponse,
-      providesTags: ["delivery-item"],
+      providesTags: ["delivery-item", "sale"],
     }),
     getDeliveryWaitReturnsId: builder.query<
       ServerResponse<TDeliveryWaitReturnItem>,
@@ -88,20 +88,18 @@ export const deliveryApi = api.injectEndpoints({
       invalidatesTags: ["delivery-item"],
     }),
     postDeliveryAcceptId: builder.mutation<TMessage, any>({
-      query: (body) => ({
-        url: `api/delivery/accept/${body.id}`,
+      query: (id) => ({
+        url: `api/delivery/accept/${id}`,
         method: "POST",
-        body,
       }),
       transformResponse,
       transformErrorResponse,
       invalidatesTags: ["delivery-item"],
     }),
     postDeliveryRejectId: builder.mutation<TMessage, any>({
-      query: (body) => ({
-        url: `api/delivery/reject/${body.id}`,
+      query: (id) => ({
+        url: `api/delivery/reject/${id}`,
         method: "POST",
-        body,
       }),
       transformResponse,
       transformErrorResponse,

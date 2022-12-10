@@ -4,7 +4,6 @@ import NextNProgress from "nextjs-progressbar";
 import type { AppProps } from "next/app";
 
 import { store } from "../app/redux";
-
 import Layout from "../app/components/layouts/Layout";
 
 import "../styles/globals.scss";

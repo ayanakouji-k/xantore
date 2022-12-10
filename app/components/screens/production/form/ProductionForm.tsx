@@ -11,6 +11,7 @@ import styles from "./form.module.scss";
 
 const ProductionForm: React.FC = () => {
   const [form] = Form.useForm();
+
   const { data: warehouseItems } = useGetWarehouseProductItemsQuery(1);
   const [createProduction, { isError, isLoading, isSuccess }] =
     useCreateProductionMutation();
@@ -76,16 +77,12 @@ const ProductionForm: React.FC = () => {
                     />
                   </Form.Item>
                 </div>
-                <div>
-                  {key ? (
-                    <AiFillDelete
-                      color="crimson"
-                      size={30}
-                      cursor="pointer"
-                      onClick={() => remove(name)}
-                    />
-                  ) : null}
-                </div>
+                <AiFillDelete
+                  color="crimson"
+                  size={30}
+                  cursor="pointer"
+                  onClick={() => remove(name)}
+                />
               </div>
             ))}
             <Button
