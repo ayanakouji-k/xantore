@@ -1,26 +1,32 @@
 import { Form, InputNumber, Select } from "antd";
+import Cookies from "js-cookie";
 import React from "react";
 import {
-  useGetDeliveryAllQuery,
-  useGetWarehouseProductItemsQuery,
-  usePostDeliveryOrderMutation,
+  useGetDeliveryBaggageIdQuery,
+  useGetWarehouseProductsQuery,
+  usePostDeliveryReturnProductMutation,
 } from "../../../../redux/index.endpoints";
 import { FormContainer, ModalContainer } from "../../../shared";
 
-const DeliveryOrderModal: React.FC = () => {
+const DeliveryReturnModal: React.FC = () => {
   const [form] = Form.useForm();
 
-  const [postOrder, { isLoading, isSuccess, isError }] =
-    usePostDeliveryOrderMutation();
-  const { data: warehouseItems } = useGetWarehouseProductItemsQuery(1);
-  const { data: deliveryAll } = useGetDeliveryAllQuery(1);
+  const role = Cookies.get("role");
+  const userId = Cookies.get("userId");
+
+  const [returnProduct, { isLoading, isSuccess, isError }] =
+    usePostDeliveryReturnProductMutation();
+  const { data: deliveryBaggage } = useGetDeliveryBaggageIdQuery(userId, {
+    skip: !(role === "DRIVER") || !userId,
+  });
+  const { data: warehouseProducts } = useGetWarehouseProductsQuery(1);
 
   const onFinish = (values: any) => {
-    postOrder(values);
+    returnProduct(values);
   };
   return (
     <ModalContainer
-      title="Доставщик"
+      title="Багаж"
       form={form}
       success={isSuccess || isError}
       loading={isLoading}
@@ -31,12 +37,15 @@ const DeliveryOrderModal: React.FC = () => {
         formListActive={false}
         items={[
           {
-            label: "Доставщик",
-            name: "deliveryId",
+            label: "Склад",
+            name: "recipientWarehouseId",
             input: (
               <Select allowClear loading={isLoading}>
-                {deliveryAll?.data.map((prev) => (
-                  <Select.Option key={prev.deliveryId} value={prev.deliveryId}>
+                {warehouseProducts?.data.map((prev) => (
+                  <Select.Option
+                    key={prev.warehouseId}
+                    value={prev.warehouseId}
+                  >
                     {prev.name}
                   </Select.Option>
                 ))}
@@ -45,18 +54,17 @@ const DeliveryOrderModal: React.FC = () => {
           },
           {
             label: "Продукт",
-            name: "productItemId",
+            name: "returnedProductItemId",
             input: (
               <Select allowClear loading={isLoading}>
-                {warehouseItems?.data
+                {deliveryBaggage?.data
                   .filter((prev) => prev.productAmount)
                   .map((prev) => (
                     <Select.Option
                       key={prev.productItemId}
                       value={prev.productItemId}
                     >
-                      {prev.product} / {prev.productAmount} штук /{" "}
-                      {prev.warehouseName}
+                      {prev.product} / {prev.productAmount} штук
                     </Select.Option>
                   ))}
               </Select>
@@ -73,4 +81,4 @@ const DeliveryOrderModal: React.FC = () => {
   );
 };
 
-export default DeliveryOrderModal;
+export default DeliveryReturnModal;

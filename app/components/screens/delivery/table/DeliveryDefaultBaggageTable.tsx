@@ -12,10 +12,13 @@ const DeliveryDefaultBaggageTable: React.FC = () => {
   const role = Cookies.get("role");
   const userId = Cookies.get("userId");
 
+  const [stateUserId, setStateUserId] = React.useState(0);
+  const [stateRole, setStateRole] = React.useState("");
+
   const { data: deliveryBaggage, isLoading } = useGetDeliveryBaggageIdQuery(
-    userId,
+    stateUserId,
     {
-      skip: !(role === "DRIVER") || !userId,
+      skip: !(stateRole === "DRIVER") || !stateUserId,
     }
   );
   const columns: ColumnsType<TWarehouseIdItem> = [
@@ -52,6 +55,12 @@ const DeliveryDefaultBaggageTable: React.FC = () => {
       key: "createdAt",
     },
   ];
+  React.useEffect(() => {
+    if (role) {
+      setStateUserId(Number(userId));
+      setStateRole(role);
+    }
+  }, [userId, role]);
   return (
     <TableContainer
       title="Багаж"

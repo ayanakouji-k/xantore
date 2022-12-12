@@ -9,7 +9,7 @@ const DeliveryUsersTabs: React.FC = () => {
   const { data: delivery } = useGetDeliveryAllQuery(1);
 
   const handleChange = (value: any) => {
-    if (value === "all") {
+    if (value === "0") {
       dispatch(setGetId(null));
     } else {
       dispatch(setGetId(value));
@@ -17,7 +17,7 @@ const DeliveryUsersTabs: React.FC = () => {
   };
   return (
     <Tabs onChange={handleChange} type="card" defaultActiveKey="all">
-      <Tabs.TabPane tab="Все" key="all" />
+      <Tabs.TabPane tab="Все" key="0" />
       {delivery?.data.map((prev) => (
         <Tabs.TabPane tab={prev.name} key={prev.deliveryId} />
       ))}

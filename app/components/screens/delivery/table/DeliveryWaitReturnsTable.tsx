@@ -27,11 +27,11 @@ const DeliveryWaitReturnsTable: React.FC = () => {
   const [acceptDelivery] = usePostDeliveryAcceptIdMutation();
   const [rejectDelivery] = usePostDeliveryRejectIdMutation();
 
-  const onAcceptDelivery = (id: number) => {
-    acceptDelivery(id);
+  const onAcceptDelivery = (value: number) => {
+    acceptDelivery(value);
   };
-  const onRejectDelivery = (id: number) => {
-    rejectDelivery(id);
+  const onRejectDelivery = (value: number) => {
+    rejectDelivery(value);
   };
 
   const columns: ColumnsType<TDeliveryWaitReturnItem> = [

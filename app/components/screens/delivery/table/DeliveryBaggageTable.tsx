@@ -10,8 +10,8 @@ const DeliveryBaggageTable: React.FC = () => {
   const { id } = useAppSelector((state) => state.getId);
   const [current, setCurrent] = React.useState(1);
   const { data: deliveryBaggageId, isLoading: deliveryBaggageIdLoading } =
-    useGetDeliveryBaggageIdQuery(id, {
-      skip: !id,
+    useGetDeliveryBaggageIdQuery(Number(id), {
+      skip: !Number(id),
     });
   const columns: ColumnsType<TWarehouseIdItem> = [
     {
