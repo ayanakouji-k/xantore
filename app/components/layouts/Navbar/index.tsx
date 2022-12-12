@@ -15,6 +15,8 @@ import { useAppDispatch, useAppSelector, useResponsive } from "../../../hooks";
 import logo from "../../../assets/images/logo.png";
 import styles from "./navbar.module.scss";
 
+const rootSubmenuKeys = ["/production", "/sale", "/employees", "/delivery"];
+
 const Navbar: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -24,6 +26,17 @@ const Navbar: React.FC = () => {
 
   const [drawer, setDrawer] = React.useState(false);
   const [stateRoute, setStateRoute] = React.useState<any>(null);
+
+  const [openKeys, setOpenKeys] = React.useState([""]);
+
+  const onOpenChange: MenuProps["onOpenChange"] = (keys) => {
+    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
 
   const onClick: MenuProps["onClick"] = (e) => {
     router.push(e.key);
@@ -75,6 +88,8 @@ const Navbar: React.FC = () => {
           <Menu
             mode="inline"
             selectedKeys={[router.pathname]}
+            openKeys={openKeys}
+            onOpenChange={onOpenChange}
             onClick={onClick}
             items={stateRoute}
           />

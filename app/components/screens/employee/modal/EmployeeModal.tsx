@@ -50,7 +50,9 @@ const EmployeeModal: React.FC = () => {
           {
             label: "Номер",
             name: "phoneNumber",
-            input: (
+            input: id ? (
+              <InputNumber type="tel" addonBefore="+998" />
+            ) : (
               <InputNumber
                 formatter={(value) =>
                   `${value?.toString()}`.replace(
@@ -59,7 +61,6 @@ const EmployeeModal: React.FC = () => {
                   )
                 }
                 type="tel"
-                parser={(value) => value!.replace(/\$\s?|(,*)/g, "")}
                 addonBefore="+998"
               />
             ),

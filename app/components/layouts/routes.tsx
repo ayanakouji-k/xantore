@@ -53,6 +53,10 @@ export const routes: MenuProps["items"] = [
     key: "/delivery",
     label: "Доставщик",
     icon: <TbTruckDelivery />,
+    children: [
+      { label: "Подгружать", key: "/delivery/upload" },
+      { label: "История", key: "/delivery/history" },
+    ],
   },
   {
     key: "/client",

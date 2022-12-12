@@ -38,7 +38,6 @@ const UsersModal: React.FC = () => {
                   )
                 }
                 type="tel"
-                parser={(value) => value!.replace(/\$\s?|(,*)/g, "")}
                 addonBefore="+998"
               />
             ),
