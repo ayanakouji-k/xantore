@@ -5,8 +5,10 @@ import {
   DeliveryBaggageTable,
   DeliveryWaitReturnsTable,
 } from "../table";
+import { useAppSelector } from "../../../../hooks";
 
 const DeliveryTabs: React.FC = () => {
+  const { id } = useAppSelector((state) => state.getId);
   const items = [
     {
       label: "Загружено",
@@ -17,6 +19,7 @@ const DeliveryTabs: React.FC = () => {
       label: "В багаже",
       key: "2",
       children: <DeliveryBaggageTable />,
+      disabled: Number(id) === 0,
     },
     {
       label: "Перемещения",

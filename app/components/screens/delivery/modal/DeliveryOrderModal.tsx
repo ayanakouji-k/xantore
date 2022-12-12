@@ -49,7 +49,7 @@ const DeliveryOrderModal: React.FC = () => {
             input: (
               <Select allowClear loading={isLoading}>
                 {warehouseItems?.data
-                  .filter((prev) => prev.productAmount)
+                  ?.filter((prev) => prev.productAmount)
                   .map((prev) => (
                     <Select.Option
                       key={prev.productItemId}

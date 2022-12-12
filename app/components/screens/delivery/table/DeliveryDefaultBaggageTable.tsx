@@ -28,11 +28,6 @@ const DeliveryDefaultBaggageTable: React.FC = () => {
       key: "productItemId",
     },
     {
-      title: "Добавил",
-      dataIndex: "createdBy",
-      key: "createdBy",
-    },
-    {
       title: "Названия",
       dataIndex: "product",
       key: "product",

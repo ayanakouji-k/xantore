@@ -19,11 +19,6 @@ const WarehouseItemsTable: React.FC<any> = ({ id }) => {
       width: 30,
     },
     {
-      title: "Добавил",
-      dataIndex: "createdBy",
-      key: "createdBy",
-    },
-    {
       title: "Названия",
       dataIndex: "product",
       key: "product",

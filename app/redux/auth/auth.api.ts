@@ -38,7 +38,7 @@ export const authApi = api.injectEndpoints({
       transformResponse,
       transformErrorResponse,
     }),
-    stepAuthLogin: builder.mutation<TMessage, TStepAuthLogin>({
+    stepAuthLogin: builder.mutation<any, TStepAuthLogin>({
       query: (body) => ({
         url: "api/auth/log-in",
         method: "POST",

@@ -30,8 +30,9 @@ const LoginForm: React.FC = () => {
   }, [isSuccess]);
   React.useEffect(() => {
     if (authLogin) {
-      Cookies.set("token", authLogin.data);
-      Cookies.set("role", "ADMIN");
+      Cookies.set("token", authLogin.data.token);
+      Cookies.set("role", authLogin.data.user.role);
+      Cookies.set("userId", authLogin.data.user.userId);
     }
   }, [isSuccess]);
   return (

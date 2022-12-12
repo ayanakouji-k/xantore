@@ -77,12 +77,14 @@ const ProductionForm: React.FC = () => {
                     />
                   </Form.Item>
                 </div>
-                <AiFillDelete
-                  color="crimson"
-                  size={30}
-                  cursor="pointer"
-                  onClick={() => remove(name)}
-                />
+                {key ? (
+                  <AiFillDelete
+                    color="crimson"
+                    size={30}
+                    cursor="pointer"
+                    onClick={() => remove(name)}
+                  />
+                ) : null}
               </div>
             ))}
             <Button
