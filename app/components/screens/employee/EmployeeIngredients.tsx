@@ -10,7 +10,7 @@ const EmployeeIngredients: React.FC = () => {
   const { handleClick } = useSetModalOpen();
   return (
     <>
-      <Meta title="Поставщик || Товары" />
+      <Meta title="Поставщик | Товары" />
       <Heading
         title="Поставщик / Товары"
         extra={[<UiButton text="Получать" onClick={handleClick} />]}

@@ -11,7 +11,7 @@
     overflow: auto;
     position: relative;
     &::-webkit-scrollbar {
-      width: 5px;
+      width: 3px;
       height: 2px;
       background-color: #fff;
     }
@@ -26,8 +26,8 @@
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    box-shadow: 0 0 10px #fff;
     gap: 10px;
-    border-bottom: 1px solid #eee;
     .link {
       display: flex;
       align-items: center;

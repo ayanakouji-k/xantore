@@ -18,7 +18,7 @@ const DeliveryUsersTabs: React.FC = () => {
   return (
     <Tabs onChange={handleChange} type="card" defaultActiveKey="all">
       <Tabs.TabPane tab="Все" key="0" />
-      {delivery?.data.map((prev) => (
+      {delivery?.data?.map((prev) => (
         <Tabs.TabPane tab={prev.name} key={prev.deliveryId} />
       ))}
     </Tabs>

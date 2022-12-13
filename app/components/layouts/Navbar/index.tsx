@@ -72,10 +72,10 @@ const Navbar: React.FC = () => {
     >
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <Link href="/home" className={styles.link}>
+          <div className={styles.link}>
             <Image src={logo} width={40} alt="Logo" />
             <h3>Xantore</h3>
-          </Link>
+          </div>
           <div style={{ cursor: "pointer", marginTop: 7 }}>
             <MdClear
               onClick={() => dispatch(isNavbarShow(!navShow))}
