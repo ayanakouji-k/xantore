@@ -1,1 +1,1 @@
-export const apiUrl = "http://83.222.9.7:8088";
+export const apiUrl = "http://khantore.1008891-cr99149.tmweb.ru:8088";
