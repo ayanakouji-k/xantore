@@ -10,12 +10,6 @@ const ClientTable: React.FC = () => {
   const { data: client, isLoading } = useGetClientAllQuery(current);
   const columns: ColumnsType<TClientItem> = [
     {
-      title: "№",
-      dataIndex: "outputId",
-      key: "outputId",
-      width: 30,
-    },
-    {
       title: "Добавил",
       dataIndex: "createdBy",
       key: "createdBy",

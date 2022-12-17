@@ -15,12 +15,6 @@ const WarehouseProductsTable: React.FC = () => {
   const { data: products, isLoading } = useGetWarehouseProductsQuery(current);
   const columns: ColumnsType<TWarehouseItem> = [
     {
-      title: "№",
-      dataIndex: "warehouseId",
-      key: "warehouseId",
-      width: 30,
-    },
-    {
       title: "Названия",
       dataIndex: "name",
       key: "name",

@@ -13,12 +13,6 @@ const WarehouseItemsTable: React.FC<any> = ({ id }) => {
   });
   const columns: ColumnsType<any> = [
     {
-      title: "№",
-      dataIndex: "productItemId",
-      key: "productItemId",
-      width: 30,
-    },
-    {
       title: "Названия",
       dataIndex: "product",
       key: "product",

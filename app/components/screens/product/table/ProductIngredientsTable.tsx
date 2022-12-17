@@ -19,12 +19,6 @@ const ProductIngredientsTable: React.FC = () => {
     useGetProductIngredientsQuery(current);
   const columns: ColumnsType<any> = [
     {
-      title: "№",
-      dataIndex: "productId",
-      key: "productId",
-      width: 30,
-    },
-    {
       title: "Названия",
       dataIndex: "name",
       key: "name",

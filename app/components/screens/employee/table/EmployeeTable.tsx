@@ -23,12 +23,6 @@ const EmployeeTable: React.FC = () => {
   };
   const columns: ColumnsType<TEmployeeItem> = [
     {
-      title: "№",
-      dataIndex: "employeeId",
-      key: "employeeId",
-      width: 30,
-    },
-    {
       title: "Добавил",
       dataIndex: "createdBy",
       key: "createdBy",

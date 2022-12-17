@@ -11,12 +11,6 @@ const EmployeeIngredientsTable: React.FC = () => {
     useGetProductionIngredientsQuery(current);
   const columns: ColumnsType<TPostIncomeIngredientItem> = [
     {
-      title: "№",
-      dataIndex: "inputId",
-      key: "inputId",
-      width: 30,
-    },
-    {
       title: "Названия",
       dataIndex: "product",
       key: "product",

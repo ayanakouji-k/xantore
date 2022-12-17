@@ -15,11 +15,6 @@ const DeliveryBaggageTable: React.FC = () => {
     });
   const columns: ColumnsType<TWarehouseIdItem> = [
     {
-      title: "№",
-      dataIndex: "productItemId",
-      key: "productItemId",
-    },
-    {
       title: "Названия",
       dataIndex: "product",
       key: "product",

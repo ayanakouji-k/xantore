@@ -36,11 +36,6 @@ const DeliveryWaitReturnsTable: React.FC = () => {
 
   const columns: ColumnsType<TDeliveryWaitReturnItem> = [
     {
-      title: "№",
-      dataIndex: "inputId",
-      key: "inputId",
-    },
-    {
       title: "Названия",
       dataIndex: "product",
       key: "product",
