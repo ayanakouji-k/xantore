@@ -71,6 +71,7 @@ const ProductModal: React.FC = () => {
       createProduct(values);
     }
   };
+  const time = setTimeout(() => console.log(""), 100);
   React.useEffect(() => {
     if (id && findProductItem) {
       form.setFieldsValue({
@@ -82,7 +83,7 @@ const ProductModal: React.FC = () => {
       });
       setProductId(warehouseId);
     }
-  });
+  }, [time]);
   return (
     <ModalContainer
       title="Продукт"

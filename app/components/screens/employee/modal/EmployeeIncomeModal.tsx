@@ -44,7 +44,7 @@ const EmployeeIncomeModal: React.FC = () => {
             name: "employerId",
             label: "Поставщик",
             input: (
-              <Select allowClear placeholder="Выберите поставщика">
+              <Select allowClear>
                 {employeeUsers?.data.map((prev) => (
                   <Select.Option key={prev.employeeId} value={prev.employeeId}>
                     {prev.name}
@@ -58,11 +58,7 @@ const EmployeeIncomeModal: React.FC = () => {
             name: "warehouseId",
             required: false,
             input: (
-              <Select
-                allowClear
-                onChange={handleChangeId}
-                placeholder="Выберите склад"
-              >
+              <Select allowClear onChange={handleChangeId}>
                 {warehouseIngredients?.data.map((prev) => (
                   <Select.Option
                     key={prev.warehouseId}
@@ -78,7 +74,7 @@ const EmployeeIncomeModal: React.FC = () => {
             name: "productItemId",
             label: "Продукт",
             input: (
-              <Select allowClear placeholder="Выберите продукта">
+              <Select allowClear>
                 {warehouseItems?.data.map((prev) => (
                   <Select.Option
                     key={prev.productItemId}

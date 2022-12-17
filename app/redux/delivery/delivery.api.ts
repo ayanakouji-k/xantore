@@ -19,7 +19,7 @@ export const deliveryApi = api.injectEndpoints({
         url: `api/delivery/all`,
       }),
       transformErrorResponse,
-      providesTags: ["delivery"],
+      providesTags: ["delivery", "auth"],
     }),
     getDeliveryOrders: builder.query<
       ServerResponse<TDeliveryOrderItem>,

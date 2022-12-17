@@ -14,7 +14,7 @@ export const clientApi = api.injectEndpoints({
         url: `api/client/all`,
       }),
       transformErrorResponse,
-      providesTags: ["client"],
+      providesTags: ["client", "sale"],
     }),
     createClient: builder.mutation<TMessage, TCreateClient>({
       query: (body) => ({

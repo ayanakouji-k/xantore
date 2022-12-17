@@ -1,3 +1,10 @@
+.form {
+  padding: 1rem;
+  -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  background-color: #fff;
+  border-radius: 5px;
+}
 .items {
   width: 100%;
   display: flex;

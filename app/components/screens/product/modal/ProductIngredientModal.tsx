@@ -21,7 +21,7 @@ const ProductIngredientModal: React.FC = () => {
     (prev) => prev.productId === id
   );
   const onFinish = (values: any) => {
-    editProduct({ id, type: "INGREDIENT", ...values });
+    editProduct({ id, type: "INGREDIENT", ingredients: [], ...values });
   };
   React.useEffect(() => {
     if (id && findProductItem) {
