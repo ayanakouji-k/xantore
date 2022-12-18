@@ -38,6 +38,7 @@ export const deliveryApi = api.injectEndpoints({
       query: () => ({
         url: `api/delivery/wait-returns`,
       }),
+      providesTags: ["delivery-item"],
       transformErrorResponse,
     }),
     getDeliveryBaggageId: builder.query<ServerResponse<TWarehouseIdItem>, any>({

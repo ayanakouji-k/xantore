@@ -41,6 +41,17 @@ const DeliveryWaitReturnsTable: React.FC = () => {
       key: "product",
     },
     {
+      title: "Добавил",
+      dataIndex: "createdBy",
+      key: "createdBy",
+    },
+    {
+      title: "Количество",
+      dataIndex: "amount",
+      key: "amount",
+      render: (number) => localeString(number, "штук"),
+    },
+    {
       title: "Цена",
       dataIndex: "productPrice",
       key: "productPrice",

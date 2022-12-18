@@ -39,11 +39,6 @@ const DeliveryDefaultBaggageTable: React.FC = () => {
       key: "productPrice",
       render: (number) => localeString(number, "сум"),
     },
-    {
-      title: "Добавлено",
-      dataIndex: "createdAt",
-      key: "createdAt",
-    },
   ];
   React.useEffect(() => {
     if (role) {
