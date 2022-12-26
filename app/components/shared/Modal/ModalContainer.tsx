@@ -66,6 +66,8 @@ const ModalContainer: React.FC<IModal> = ({
       onCancel={onCancelModal}
       onOk={handleOk}
       confirmLoading={loading}
+      cancelText="Отмена"
+      okText="Сохранить"
     >
       {children}
     </Modal>

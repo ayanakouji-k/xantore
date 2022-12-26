@@ -1,21 +1,30 @@
 import React from "react";
-import { useSetModalOpen } from "../../../hooks";
+import { useAppSelector, useSetModalOpen } from "../../../hooks";
 import Meta from "../../../utils/Meta";
 import { Heading } from "../../shared";
 import { UiButton } from "../../ui";
-import { DeliveryReturnModal } from "./modal";
+import { DeliveryReturnModal, DeliveryFriendReturnModal } from "./modal";
 import { DeliveryDefaultBaggageTable } from "./table";
 
 const DeliveryBaggage: React.FC = () => {
-  const { handleClick } = useSetModalOpen();
+  const { handleClick, handleClick2 } = useSetModalOpen();
+  const { isModalOpen, isModalOpen2 } = useAppSelector((state) => state.modal);
   return (
     <>
       <Meta title="Доставщик | Багаж" />
       <Heading
         title="Доставщик / Багаж"
-        extra={[<UiButton text="Перемещать" onClick={handleClick} />]}
+        extra={[
+          <UiButton text="Перемещать" onClick={handleClick} />,
+          <UiButton
+            text="Перемещать (другу)"
+            color=""
+            onClick={handleClick2}
+          />,
+        ]}
       />
-      <DeliveryReturnModal />
+      {isModalOpen && <DeliveryReturnModal />}
+      {isModalOpen2 && <DeliveryFriendReturnModal />}
       <DeliveryDefaultBaggageTable />
     </>
   );

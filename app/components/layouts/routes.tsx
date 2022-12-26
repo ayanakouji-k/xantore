@@ -8,7 +8,7 @@ import {
   TbBuildingFactory,
   TbTruckDelivery,
 } from "react-icons/tb";
-import { MdDashboardCustomize } from "react-icons/md";
+import { MdDashboardCustomize, MdMoveToInbox } from "react-icons/md";
 import { FaBriefcase } from "react-icons/fa";
 export const routes: MenuProps["items"] = [
   { key: "/home", label: "Главная", icon: <BiHomeAlt /> },
@@ -79,5 +79,10 @@ export const routesDriver: MenuProps["items"] = [
     key: "/delivery/baggage",
     label: "Багаж",
     icon: <FaBriefcase />,
+  },
+  {
+    key: "/delivery/moving",
+    label: "Перемещения",
+    icon: <MdMoveToInbox />,
   },
 ];

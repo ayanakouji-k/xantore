@@ -7,6 +7,14 @@ export type TDeliveryAllItem = {
   createdBy: string;
   name: string;
 };
+export type TDeliveryMovingId = {
+  id: number;
+  fromDeliverer: string;
+  toDeliverer: string;
+  product: string;
+  amount: number;
+  action: string;
+};
 export type TDeliveryOrderItem = {
   createdAt: string;
   outputId: number;

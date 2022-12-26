@@ -7,6 +7,7 @@ import { api } from "../index.api";
 import { TMessage } from "../index.types";
 import {
   TDeliveryAllItem,
+  TDeliveryMovingId,
   TDeliveryOrderItem,
   TDeliveryWaitReturnItem,
 } from "./delivery.types";
@@ -40,6 +41,13 @@ export const deliveryApi = api.injectEndpoints({
       }),
       providesTags: ["delivery-item"],
       transformErrorResponse,
+    }),
+    getDeliveryMovingId: builder.query<ServerResponse<TDeliveryMovingId>, any>({
+      query: (id) => ({
+        url: `api/delivery/${id}/moving`,
+      }),
+      transformErrorResponse,
+      providesTags: ["delivery-item"],
     }),
     getDeliveryBaggageId: builder.query<ServerResponse<TWarehouseIdItem>, any>({
       query: (id) => ({
@@ -88,6 +96,16 @@ export const deliveryApi = api.injectEndpoints({
       transformErrorResponse,
       invalidatesTags: ["delivery-item"],
     }),
+    postDeliveryReturnFriendProduct: builder.mutation<TMessage, any>({
+      query: (body) => ({
+        url: "api/delivery/share-with-driver",
+        method: "POST",
+        body,
+      }),
+      transformResponse,
+      transformErrorResponse,
+      invalidatesTags: ["delivery-item"],
+    }),
     postDeliveryAcceptId: builder.mutation<TMessage, any>({
       query: (id) => ({
         url: `api/delivery/accept/${id}`,
@@ -100,6 +118,24 @@ export const deliveryApi = api.injectEndpoints({
     postDeliveryRejectId: builder.mutation<TMessage, any>({
       query: (id) => ({
         url: `api/delivery/reject/${id}`,
+        method: "POST",
+      }),
+      transformResponse,
+      transformErrorResponse,
+      invalidatesTags: ["delivery-item"],
+    }),
+    postDeliveryAcceptMovingId: builder.mutation<TMessage, any>({
+      query: (id) => ({
+        url: `api/delivery/accept-moving/${id}`,
+        method: "POST",
+      }),
+      transformResponse,
+      transformErrorResponse,
+      invalidatesTags: ["delivery-item"],
+    }),
+    postDeliveryRejectMovingId: builder.mutation<TMessage, any>({
+      query: (id) => ({
+        url: `api/delivery/reject-moving/${id}`,
         method: "POST",
       }),
       transformResponse,

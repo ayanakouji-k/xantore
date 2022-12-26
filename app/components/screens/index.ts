@@ -13,3 +13,4 @@ export { default as Users } from "./users/Users";
 export { default as DeliveryHistory } from "./delivery/DeliveryHistory";
 export { default as DeliveryBaggage } from "./delivery/DeliveryBaggage";
 export { default as DeliveryUpload } from "./delivery/DeliveryUpload";
+export { default as DeliveryMoving } from "./delivery/DeliveryMoving";

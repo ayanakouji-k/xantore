@@ -49,8 +49,12 @@ export const {
   useGetDeliveryOrdersQuery,
   useGetDeliveryWaitReturnsIdQuery,
   useGetDeliveryWaitReturnsQuery,
+  useGetDeliveryMovingIdQuery,
   usePostDeliveryAcceptIdMutation,
   usePostDeliveryOrderMutation,
   usePostDeliveryRejectIdMutation,
   usePostDeliveryReturnProductMutation,
+  usePostDeliveryReturnFriendProductMutation,
+  usePostDeliveryAcceptMovingIdMutation,
+  usePostDeliveryRejectMovingIdMutation,
 } = deliveryApi;
