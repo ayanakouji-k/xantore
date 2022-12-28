@@ -11,4 +11,5 @@ export interface ITable {
   setCurrent: (page: number) => void;
   showExpand?: boolean;
   expandableItems?: any;
+  paginationShow?: boolean;
 }
