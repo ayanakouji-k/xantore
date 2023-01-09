@@ -105,6 +105,11 @@ const ProductModal: React.FC = () => {
             input: <InputNumber inputMode="numeric" formatter={formatter} />,
           },
           {
+            label: "Предупреждающий количество",
+            name: "warningAmount",
+            input: <InputNumber inputMode="numeric" formatter={formatter} />,
+          },
+          {
             label: "Тип",
             name: "type",
             input: (
